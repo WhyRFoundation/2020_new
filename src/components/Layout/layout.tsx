@@ -7,17 +7,12 @@ import {
 } from '@reach/router'
 import reset from 'styled-reset-advanced'
 
-import { Navigation, MobileNavigation } from '../Navigation '
+import { Hero } from './Hero'
+import { Navigation, MobileNavigation } from '../Navigation'
 import { MediaQueryWrapper } from '../UI/MediaQueryWrapper'
-
-import startupImg from '../../../content/assets/startup.png'
 
 interface LayoutProps {
   title: string
-}
-
-interface HeroProps {
-  image?: string
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -98,9 +93,9 @@ export const Layout: React.FC<LayoutProps> = ({ title, children }) => {
             </MediaQueryWrapper>
           </>
         )}
-        <Hero image={startupImg} ref={heroRef}>
-          <span>{title}</span>
-        </Hero>
+        <span ref={heroRef}>
+          <Hero />
+        </span>
         <PageContent>{children}</PageContent>
         <Footer>
           © {new Date().getFullYear()}, Built with{' '}
@@ -114,21 +109,7 @@ export const Layout: React.FC<LayoutProps> = ({ title, children }) => {
 const Wrapper = styled.div`
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto 40px auto 100px;
-`
-
-const Hero = styled.div<HeroProps>`
-  background: url(${({ image }) => (image ? image : '')}) center center
-    no-repeat;
-  background-size: cover;
-  position: relative;
-  width: 100%;
-  max-width: 980px;
-  height: 60vh;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  grid-template-rows: auto auto auto 6.25em;
 `
 
 const PageContent = styled.main`
