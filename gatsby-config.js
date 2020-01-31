@@ -121,5 +121,21 @@ module.exports = {
         codegenDelay: 250,
       },
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Montserrat`,
+            variants: [`300`, `400`, `700`],
+          },
+          {
+            family: `Roboto`,
+            variants: [`300`, `400`, `700`],
+            subsets: [`latin`],
+          },
+        ],
+      },
+    },
   ],
 }

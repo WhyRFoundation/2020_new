@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import {
   createHistory,
   LocationProvider,
@@ -7,6 +7,7 @@ import {
 } from '@reach/router'
 import reset from 'styled-reset-advanced'
 
+import { theme } from './theme'
 import { Hero } from './Hero'
 import { Navigation, MobileNavigation } from '../Navigation'
 import { MediaQueryWrapper } from '../UI/MediaQueryWrapper'
@@ -70,38 +71,40 @@ export const Layout: React.FC<LayoutProps> = ({ title, children }) => {
 
   return (
     <LocationProvider history={history}>
-      <GlobalStyle theme="" />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle theme="" />
 
-      <Wrapper>
-        {heroHeight && (
-          <>
-            <MediaQueryWrapper
-              defaultStyles="display: none;"
-              mediaStyles="display: block;"
-            >
-              <Navigation scrollHeight={heroHeight} />
-            </MediaQueryWrapper>
-            <MediaQueryWrapper
-              defaultStyles="display: block;"
-              mediaStyles="display: none;"
-            >
-              <MobileNavigation
-                scrollHeight={heroHeight}
-                toggleHandler={NavToggleHandler}
-                isOpen={isOpen}
-              />
-            </MediaQueryWrapper>
-          </>
-        )}
-        <span ref={heroRef}>
-          <Hero />
-        </span>
-        <PageContent>{children}</PageContent>
-        <Footer>
-          © {new Date().getFullYear()}, Built with{' '}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
-      </Wrapper>
+        <Wrapper>
+          {heroHeight && (
+            <>
+              <MediaQueryWrapper
+                defaultStyles="display: none;"
+                mediaStyles="display: block;"
+              >
+                <Navigation scrollHeight={heroHeight} />
+              </MediaQueryWrapper>
+              <MediaQueryWrapper
+                defaultStyles="display: block;"
+                mediaStyles="display: none;"
+              >
+                <MobileNavigation
+                  scrollHeight={heroHeight}
+                  toggleHandler={NavToggleHandler}
+                  isOpen={isOpen}
+                />
+              </MediaQueryWrapper>
+            </>
+          )}
+          <span ref={heroRef}>
+            <Hero />
+          </span>
+          <PageContent>{children}</PageContent>
+          <Footer>
+            © {new Date().getFullYear()}, Built with{' '}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </Footer>
+        </Wrapper>
+      </ThemeProvider>
     </LocationProvider>
   )
 }
