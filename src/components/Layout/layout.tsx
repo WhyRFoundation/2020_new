@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 import {
   createHistory,
   LocationProvider,
@@ -8,6 +7,8 @@ import {
 } from '@reach/router'
 
 import { Searcher } from '../Searcher'
+import { Navigation, MobileNavigation } from '../Navigation '
+import { MediaQueryWrapper } from '../UI/MediaQueryWrapper'
 
 import startupImg from '../../../content/assets/startup.png'
 
@@ -23,22 +24,50 @@ const source = createMemorySource('/')
 const history = createHistory(source)
 
 export const Layout: React.FC<LayoutProps> = ({ title, children }) => {
+  const [heroHeight, setHeroHeight] = useState<number>(0)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+
+  const heroRef = useRef<HTMLDivElement>(null)
+
+  const NavToggleHandler = () => {
+    setIsOpen(!isOpen)
+  }
+
+  useLayoutEffect(() => {
+    if (heroRef && heroRef.current) {
+      setHeroHeight(heroRef.current.clientHeight)
+    }
+    return () => {
+      setHeroHeight(0)
+    }
+  }, [heroRef, heroRef.current, heroHeight])
+
   return (
     <LocationProvider history={history}>
       <Wrapper>
-        <Hero image={startupImg}>
+        {heroHeight && (
+          <>
+            <MediaQueryWrapper
+              defaultStyles="display: none;"
+              mediaStyles="display: block;"
+            >
+              <Navigation scrollHeight={heroHeight} />
+            </MediaQueryWrapper>
+            <MediaQueryWrapper
+              defaultStyles="display: block;"
+              mediaStyles="display: none;"
+            >
+              <MobileNavigation
+                scrollHeight={heroHeight}
+                toggleHandler={NavToggleHandler}
+                isOpen={isOpen}
+              />
+            </MediaQueryWrapper>
+          </>
+        )}
+        <Hero image={startupImg} ref={heroRef}>
           <span>{title}</span>
         </Hero>
-        <NavigationExample>
-          <Link to="/">Home</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/404">404</Link>
-
-          <div>
-            <Searcher />
-          </div>
-        </NavigationExample>
         <PageContent>{children}</PageContent>
         <Footer>
           © {new Date().getFullYear()}, Built with{' '}
@@ -67,15 +96,6 @@ const Hero = styled.div<HeroProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-`
-
-const NavigationExample = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  max-width: 980px;
-  margin: 0 auto;
-  width: 100%;
 `
 
 const PageContent = styled.main`
