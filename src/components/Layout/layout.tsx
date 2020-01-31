@@ -1,12 +1,12 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import {
   createHistory,
   LocationProvider,
   createMemorySource,
 } from '@reach/router'
+import reset from 'styled-reset-advanced'
 
-import { Searcher } from '../Searcher'
 import { Navigation, MobileNavigation } from '../Navigation '
 import { MediaQueryWrapper } from '../UI/MediaQueryWrapper'
 
@@ -19,6 +19,37 @@ interface LayoutProps {
 interface HeroProps {
   image?: string
 }
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    ${reset};
+    box-sizing: border-box;
+    font-family: Open Sans,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.65em;
+    margin: 0;
+    padding: 0;
+    background: ${props => (props.theme === 'purple' ? 'purple' : 'white')};
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+      letter-spacing: 0.03em;
+      line-height: 1.65em;
+      margin: 0;
+      padding: 0;
+    }
+
+    p, h1,h2,h3,h4,h5,h6, figure, figcaption,a, button, li, nav, header, div {
+      font-family: Open Sans, Helvetica, sans-serif;
+    }
+
+
+    @media screen and (min-width: 767px) {
+      font-size: 16px;
+    }
+`
 
 const source = createMemorySource('/')
 const history = createHistory(source)
@@ -44,6 +75,8 @@ export const Layout: React.FC<LayoutProps> = ({ title, children }) => {
 
   return (
     <LocationProvider history={history}>
+      <GlobalStyle theme="" />
+
       <Wrapper>
         {heroHeight && (
           <>
