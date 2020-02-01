@@ -11,10 +11,9 @@ import { theme } from './theme'
 import { Hero } from './Hero'
 import { Navigation, MobileNavigation } from '../Navigation'
 import { MediaQueryWrapper } from '../UI/MediaQueryWrapper'
+import { Footer } from './Footer'
 
-interface LayoutProps {
-  title: string
-}
+interface LayoutProps {}
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -50,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
 const source = createMemorySource('/')
 const history = createHistory(source)
 
-export const Layout: React.FC<LayoutProps> = ({ title, children }) => {
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [heroHeight, setHeroHeight] = useState<number>(0)
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -99,10 +98,7 @@ export const Layout: React.FC<LayoutProps> = ({ title, children }) => {
             <Hero />
           </span>
           <PageContent>{children}</PageContent>
-          <Footer>
-            © {new Date().getFullYear()}, Built with{' '}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </Footer>
+          <Footer />
         </Wrapper>
       </ThemeProvider>
     </LocationProvider>
@@ -121,9 +117,4 @@ const PageContent = styled.main`
   margin: 32px auto;
   min-height: 50vh;
   height: 100%;
-`
-
-const Footer = styled.footer`
-  text-align: center;
-  margin: 24px;
 `
