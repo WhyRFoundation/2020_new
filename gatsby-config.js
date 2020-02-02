@@ -127,7 +127,7 @@ module.exports = {
         fonts: [
           {
             family: `Montserrat`,
-            variants: [`300`, `400`, `700`],
+            variants: [`300`, `400`, `500`, `700`],
           },
           {
             family: `Roboto`,

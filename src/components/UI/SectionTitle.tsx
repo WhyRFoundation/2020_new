@@ -9,5 +9,5 @@ const Title = styled.h3`
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 2em;
-  color: ${props => props.theme.textColor};
+  color: ${props => props.theme.primaryTextColor};
 `

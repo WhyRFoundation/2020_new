@@ -1,6 +1,7 @@
 import React, { useState, useLayoutEffect, useCallback } from 'react'
 import styled, { css } from 'styled-components'
 
+import { scrollToHandler } from '../Utils/scrollUtils'
 import { NavigationIcon } from './NavigationIcon'
 import { NavigationLink } from './NavigationLink'
 
@@ -47,56 +48,74 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
     }
   }, [])
 
-  const scrollToHandler = () => {
-    const element = document.getElementById('contactForm')
-
-    setTimeout(() => {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: element ? element.offsetTop : 0,
-      })
-    }, 100)
-
-    toggleHandler()
-  }
-
   return (
-    <Wrapper>
-      <NavigationBar fillNav={fillNav} isOpen={isOpen}>
+    <Wrapper fillNav={fillNav} isOpen={isOpen}>
+      <NavigationBar>
         <NavigationLink path="/">Logo</NavigationLink>
         <NavigationIcon isOpen={isOpen} onClick={toggleHandler} />
       </NavigationBar>
       <LeftSideMenu isOpen={isOpen}>
-        <li>
-          <StyledMobileNavLink path="http://whyr.pl/foundation/#blog">
+        <LinkWrapper>
+          <MobileStyledLink isExternal path="http://whyr.pl/foundation/#blog">
             BLOG
-          </StyledMobileNavLink>
-        </li>
-        <li>
-          <StyledMobileNavLink as="span" onClick={scrollToHandler}>
+          </MobileStyledLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <MobileStyledLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
             About
-          </StyledMobileNavLink>
-        </li>
-        <li>
-          <StyledMobileNavLink as="span" onClick={scrollToHandler}>
+          </MobileStyledLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <MobileStyledLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
             Speakers
-          </StyledMobileNavLink>
-        </li>
-        <li>
-          <StyledMobileNavLink as="span" onClick={scrollToHandler}>
+          </MobileStyledLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <MobileStyledLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
             PRE-MEETINGS
-          </StyledMobileNavLink>
-        </li>
-        <li>
-          <StyledMobileNavLink as="span" onClick={scrollToHandler}>
+          </MobileStyledLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <MobileStyledLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
             ORGANIZERS
-          </StyledMobileNavLink>
-        </li>
-        <li>
-          <StyledMobileNavLink as="span" onClick={scrollToHandler}>
+          </MobileStyledLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <MobileStyledLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
             CODE OF CONDUCT
-          </StyledMobileNavLink>
-        </li>
+          </MobileStyledLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <MobileStyledLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
+            BUY TICKET BUTTON
+          </MobileStyledLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <MobileStyledLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
+            SOCIAL MEDIA SECTION
+          </MobileStyledLink>
+        </LinkWrapper>
       </LeftSideMenu>
     </Wrapper>
   )
@@ -107,55 +126,58 @@ interface NavigationWrapperProps {
   isOpen: boolean
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<NavigationWrapperProps>`
   position: fixed;
   width: 100%;
   z-index: 99;
+  padding: 0 2em;
+  background-color: ${props => `rgba(${props.theme.secondaryColorRGB}, 0.8)`};
 `
 
-const NavigationBar = styled.div<NavigationWrapperProps>`
+const NavigationBar = styled.div`
   color: #f8f9fa;
-  background-color: transparent;
   height: 4em;
   font-size: 1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid transparent;
-  ${({ fillNav, isOpen }) =>
-    (fillNav || isOpen) &&
-    css`
-      background-color: rgba(33, 37, 41, 0.9);
-      color: #f8f9fa;
-    `}
-  transition: all 0.15s ease-in;
 `
 
 const LeftSideMenu = styled.ul<{ isOpen: boolean }>`
-  transition: left 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: left 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   position: absolute;
-  top: 71px;
+  height: 100vh;
   left: -1000px;
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5em;
   ${({ isOpen }) =>
     isOpen &&
     css`
       z-index: 99;
-
+      background-color: ${props =>
+        `rgba(${props.theme.secondaryColorRGB}, 0.8)`};
       left: 0;
     `}
+`
 
-  > li {
-    border-bottom: 1px solid #f8f9fa;
-  }
-
-  li:last-of-type {
-    border-bottom: none;
+const MobileStyledLink = styled(NavigationLink)`
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: center;
+  padding: 1em 1.5em;
+  &:hover {
   }
 `
-const StyledMobileNavLink = styled(NavigationLink)`
-  padding: 0.75em 2.5em;
-  display: block;
+
+const LinkWrapper = styled.li`
+  width: 100%;
+  height: 3.5em;
 `

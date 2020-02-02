@@ -1,7 +1,8 @@
 import React, { useState, useLayoutEffect, useCallback } from 'react'
 import styled, { css } from 'styled-components'
 
-import { NavigationLink, StyledLink } from './NavigationLink'
+import { scrollToHandler } from '../Utils/scrollUtils'
+import { NavigationLink } from './NavigationLink'
 
 interface NavigationProps {
   scrollHeight: number
@@ -40,39 +41,68 @@ export const Navigation: React.FC<NavigationProps> = ({ scrollHeight }) => {
     }
   }, [])
 
-  const scrollToHandler = () => {
-    const element = document.getElementById('contactForm')
+  // const scrollToHandler = () => {
+  //   const element = document.getElementById('contactForm')
 
-    setTimeout(() => {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: element ? element.offsetTop : 0,
-      })
-    }, 100)
-  }
+  //   setTimeout(() => {
+  //     window.scrollTo({
+  //       behavior: 'smooth',
+  //       top: element ? element.offsetTop : 0,
+  //     })
+  //   }, 100)
+  // }
 
   return (
     <Wrapper fillNav={fillNav}>
-      <NavigationLink path="http://whyr.pl/foundation/#blog">
-        BLOG
-      </NavigationLink>
-      <NavigationLink path="/">Logo</NavigationLink>
       <StyledNav>
-        <StyledSpanAsLink as="span" onClick={scrollToHandler}>
-          About
-        </StyledSpanAsLink>
-        <StyledSpanAsLink as="span" onClick={scrollToHandler}>
-          Speakers
-        </StyledSpanAsLink>
-        <StyledSpanAsLink as="span" onClick={scrollToHandler}>
-          PRE-MEETINGS
-        </StyledSpanAsLink>
-        <StyledSpanAsLink as="span" onClick={scrollToHandler}>
-          ORGANIZERS
-        </StyledSpanAsLink>
-        <StyledSpanAsLink as="span" onClick={scrollToHandler}>
-          CODE OF CONDUCT
-        </StyledSpanAsLink>
+        <NavigationLink path="/">Logo</NavigationLink>
+        <LinkWrapper>
+          <NavigationLink isExternal path="http://whyr.pl/foundation/#blog">
+            BLOG
+          </NavigationLink>
+        </LinkWrapper>
+      </StyledNav>
+      <StyledNav>
+        <LinkWrapper>
+          <NavigationLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
+            About
+          </NavigationLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <NavigationLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
+            Speakers
+          </NavigationLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <NavigationLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
+            PRE-MEETINGS
+          </NavigationLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <NavigationLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
+            ORGANIZERS
+          </NavigationLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <NavigationLink
+            isLink={false}
+            onClick={() => scrollToHandler('contactForm')}
+          >
+            CODE OF CONDUCT
+          </NavigationLink>
+        </LinkWrapper>
       </StyledNav>
     </Wrapper>
   )
@@ -92,27 +122,23 @@ const Wrapper = styled.div<NavigationWrapperProps>`
   align-items: center;
   z-index: 99;
   border-bottom: 1px solid transparent;
+  padding: 0 2em;
   ${({ fillNav }) =>
     fillNav &&
     css`
-      background-color: rgba(33, 37, 41, 0.9);
+      background-color: ${props =>
+        `rgba(${props.theme.secondaryColorRGB}, 0.9)`};
       color: #f8f9fa;
     `}
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
 `
 
 const StyledNav = styled.nav`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
-  > a {
-    padding-left: 1em;
-  }
 `
-
-const StyledSpanAsLink = styled(StyledLink)`
-  padding-left: 1em;
+const LinkWrapper = styled.li`
+  padding-left: 1.5em;
   display: inline-block;
-  cursor: pointer;
 `

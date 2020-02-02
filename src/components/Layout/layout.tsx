@@ -115,6 +115,6 @@ const PageContent = styled.main`
   width: 100%;
   max-width: 980px;
   margin: 32px auto;
-  min-height: 50vh;
+  min-height: 150vh;
   height: 100%;
 `
