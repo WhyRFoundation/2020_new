@@ -20,30 +20,32 @@ const GlobalStyle = createGlobalStyle`
     ${reset};
     box-sizing: border-box;
     font-family: Open Sans,Helvetica,sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.04em;
     line-height: 1.65em;
     margin: 0;
     padding: 0;
     background: ${props => (props.theme === 'purple' ? 'purple' : 'white')};
-    }
+    
 
     h1,h2,h3,h4,h5,h6 {
       letter-spacing: 0.03em;
       line-height: 1.65em;
       margin: 0;
       padding: 0;
+      font-family:'Montserrat', sans-serif;
     }
 
     p, h1,h2,h3,h4,h5,h6, figure, figcaption,a, button, li, nav, header, div {
-      font-family: Open Sans, Helvetica, sans-serif;
+      font-family: 'Roboto', Helvetica, sans-serif;
     }
 
 
     @media screen and (min-width: 767px) {
-      font-size: 16px;
+      font-size: 14px;
     }
+  }
 `
 
 const source = createMemorySource('/')

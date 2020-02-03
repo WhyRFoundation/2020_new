@@ -696,6 +696,11 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___pagePrefixPath' |
   'childMdx___frontmatter___date' |
   'childMdx___frontmatter___description' |
+  'childMdx___frontmatter___sections' |
+  'childMdx___frontmatter___sections___type' |
+  'childMdx___frontmatter___sections___title' |
+  'childMdx___frontmatter___sections___subtitle' |
+  'childMdx___frontmatter___sections___content' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1433,6 +1438,11 @@ export type MdxFieldsEnum =
   'frontmatter___pagePrefixPath' |
   'frontmatter___date' |
   'frontmatter___description' |
+  'frontmatter___sections' |
+  'frontmatter___sections___type' |
+  'frontmatter___sections___title' |
+  'frontmatter___sections___subtitle' |
+  'frontmatter___sections___content' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1562,6 +1572,7 @@ export type MdxFrontmatter = {
   pagePrefixPath?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
   description?: Maybe<Scalars['String']>,
+  sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
 };
 
 
@@ -1578,6 +1589,25 @@ export type MdxFrontmatterFilterInput = {
   pagePrefixPath?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
   description?: Maybe<StringQueryOperatorInput>,
+  sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
+};
+
+export type MdxFrontmatterSections = {
+  type?: Maybe<Scalars['String']>,
+  title?: Maybe<Scalars['String']>,
+  subtitle?: Maybe<Scalars['String']>,
+  content?: Maybe<Scalars['String']>,
+};
+
+export type MdxFrontmatterSectionsFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>,
+  title?: Maybe<StringQueryOperatorInput>,
+  subtitle?: Maybe<StringQueryOperatorInput>,
+  content?: Maybe<StringQueryOperatorInput>,
+};
+
+export type MdxFrontmatterSectionsFilterListInput = {
+  elemMatch?: Maybe<MdxFrontmatterSectionsFilterInput>,
 };
 
 export type MdxGroupConnection = {
@@ -3035,7 +3065,7 @@ export type IndexPageQueryVariables = {};
 
 export type IndexPageQuery = { mdx: Maybe<(
     Pick<Mdx, 'body'>
-    & { frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'description'>> }
+    & { frontmatter: Maybe<{ sections: Maybe<Array<Maybe<Pick<MdxFrontmatterSections, 'subtitle' | 'title' | 'type' | 'content'>>>> }> }
   )> };
 
 export type Unnamed_2_QueryVariables = {};
