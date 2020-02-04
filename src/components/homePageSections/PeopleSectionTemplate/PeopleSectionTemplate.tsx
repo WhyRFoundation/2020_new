@@ -50,7 +50,7 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
     <Wrapper>
       <SectionTitle>{title}</SectionTitle>
       <MdContent md={content} />
-      <PeopleList>
+      <PeopleList centerList={images.length <= 4}>
         {images &&
           images.length > 0 &&
           images.map(image => (
@@ -63,7 +63,7 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
                   />
                 </PersonPhotoWrapper>
                 <NameWrapper>{image.name}</NameWrapper>
-                <RoleWrapper>{image.role}</RoleWrapper>
+                {image.role && <RoleWrapper>{image.role}</RoleWrapper>}
                 {image.socials && image.socials.length && (
                   <SocialsWrapper>
                     {image.socials.map(social => (
@@ -88,10 +88,11 @@ const Wrapper = styled.section`
   text-align: center;
 `
 
-const PeopleList = styled.div`
+const PeopleList = styled.div<{ centerList: boolean }>`
   display: flex;
   flex-wrap: wrap;
   margin: 0 -19px;
+  justify-content: ${props => (props.centerList ? 'center' : 'flex-start')};
 `
 
 const ListItem = styled.div`
