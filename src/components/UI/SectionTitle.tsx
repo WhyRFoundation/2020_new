@@ -15,8 +15,11 @@ const Title = styled.h3`
     content: '';
     border: 0.06em solid ${props => props.theme.primaryColor};
     border-radius: 0.8em;
-    margin: 0.8em auto;
+    margin: 0 auto;
+    margin-top: 0.4em;
+    margin-bottom: 1em;
     width: 3em;
     display: block;
+    background-color: ${props => props.theme.primaryColor};
   }
 `

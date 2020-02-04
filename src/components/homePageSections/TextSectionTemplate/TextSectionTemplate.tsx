@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { MdContent } from '../../MdContent'
 import { SectionTitle } from '../../UI/SectionTitle'
-import { SectionSubtitle } from '../../UI/SectionSubtitle'
 
 interface TextSectionTemplateProps {
   section: SectionProps
@@ -10,18 +9,16 @@ interface TextSectionTemplateProps {
 
 interface SectionProps {
   title?: string
-  subtitle?: string
   content?: string
 }
 
 export const TextSectionTemplate: React.FC<TextSectionTemplateProps> = ({
   section,
 }) => {
-  const { title, subtitle, content } = section
+  const { title, content } = section
   return (
     <Wrapper>
       <SectionTitle>{title}</SectionTitle>
-      <SectionSubtitle>{subtitle}</SectionSubtitle>
       <MdContent md={content} />
     </Wrapper>
   )
