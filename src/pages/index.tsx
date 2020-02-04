@@ -6,6 +6,7 @@ import { Layout } from '../components/Layout'
 import { Seo } from '../components/Seo'
 import { TextSectionTemplate } from '../components/homePageSections/TextSectionTemplate'
 import { PartnersSectionTemplate } from '../components/homePageSections/PartnersSectionTemplate'
+import { PeopleSectionTemplate } from '../components/homePageSections/PeopleSectionTemplate'
 
 import { IndexPageQuery } from '../../types/graphql-types'
 
@@ -35,6 +36,13 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
               case 'partners':
                 return (
                   <PartnersSectionTemplate
+                    key={section.title}
+                    section={section}
+                  />
+                )
+              case 'people':
+                return (
+                  <PeopleSectionTemplate
                     key={section.title}
                     section={section}
                   />
