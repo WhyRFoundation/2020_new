@@ -84,7 +84,7 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
 const Wrapper = styled.section`
   margin: 0 auto;
   max-width: 1280px;
-  padding: 3em 2em;
+  padding: 2em 2em;
   text-align: center;
 `
 

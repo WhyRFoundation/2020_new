@@ -1449,6 +1449,9 @@ export type MdxFieldsEnum =
   'frontmatter___sections___images___name' |
   'frontmatter___sections___images___role' |
   'frontmatter___sections___images___socials' |
+  'frontmatter___sections___images___width' |
+  'frontmatter___sections___images___height' |
+  'frontmatter___sections___images___title' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1623,6 +1626,9 @@ export type MdxFrontmatterSectionsImages = {
   name?: Maybe<Scalars['String']>,
   role?: Maybe<Scalars['String']>,
   socials?: Maybe<Array<Maybe<MdxFrontmatterSectionsImagesSocials>>>,
+  width?: Maybe<Scalars['Int']>,
+  height?: Maybe<Scalars['Int']>,
+  title?: Maybe<Scalars['String']>,
 };
 
 export type MdxFrontmatterSectionsImagesFilterInput = {
@@ -1632,6 +1638,9 @@ export type MdxFrontmatterSectionsImagesFilterInput = {
   name?: Maybe<StringQueryOperatorInput>,
   role?: Maybe<StringQueryOperatorInput>,
   socials?: Maybe<MdxFrontmatterSectionsImagesSocialsFilterListInput>,
+  width?: Maybe<IntQueryOperatorInput>,
+  height?: Maybe<IntQueryOperatorInput>,
+  title?: Maybe<StringQueryOperatorInput>,
 };
 
 export type MdxFrontmatterSectionsImagesFilterListInput = {
@@ -3110,7 +3119,7 @@ export type IndexPageQuery = { mdx: Maybe<(
     & { frontmatter: Maybe<{ sections: Maybe<Array<Maybe<(
         Pick<MdxFrontmatterSections, 'title' | 'type' | 'content'>
         & { images: Maybe<Array<Maybe<(
-          Pick<MdxFrontmatterSectionsImages, 'alt' | 'imgUrl' | 'linkUrl' | 'name' | 'role'>
+          Pick<MdxFrontmatterSectionsImages, 'alt' | 'imgUrl' | 'linkUrl' | 'name' | 'role' | 'width' | 'height' | 'title'>
           & { socials: Maybe<Array<Maybe<Pick<MdxFrontmatterSectionsImagesSocials, 'source' | 'sourceUrl'>>>> }
         )>>> }
       )>>> }> }

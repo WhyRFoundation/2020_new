@@ -7,7 +7,7 @@ import { Seo } from '../components/Seo'
 import { TextSectionTemplate } from '../components/homePageSections/TextSectionTemplate'
 import { PartnersSectionTemplate } from '../components/homePageSections/PartnersSectionTemplate'
 import { PeopleSectionTemplate } from '../components/homePageSections/PeopleSectionTemplate'
-
+import { TilesGalleryTemplate } from '../components/homePageSections/TilesGalleryTemplate'
 import { IndexPageQuery } from '../../types/graphql-types'
 
 interface IndexPageProps {
@@ -47,6 +47,10 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
                     section={section}
                   />
                 )
+              case 'masnory':
+                return (
+                  <TilesGalleryTemplate key={section.title} section={section} />
+                )
               default:
                 return (
                   <TextSectionTemplate key={section.title} section={section} />
@@ -76,6 +80,9 @@ export const pageQuery = graphql`
             linkUrl
             name
             role
+            width
+            height
+            title
             socials {
               source
               sourceUrl

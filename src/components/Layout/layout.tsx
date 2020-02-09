@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
     ${reset};
     box-sizing: border-box;
     font-family: Open Sans,Helvetica,sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.04em;
     line-height: 1.65em;
@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
 
 
     @media screen and (min-width: 767px) {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 `
