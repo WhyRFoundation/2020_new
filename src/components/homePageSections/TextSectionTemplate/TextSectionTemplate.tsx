@@ -26,7 +26,7 @@ export const TextSectionTemplate: React.FC<TextSectionTemplateProps> = ({
 
 const Wrapper = styled.section`
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 980px;
   padding: 2em 2em;
   text-align: center;
 `
