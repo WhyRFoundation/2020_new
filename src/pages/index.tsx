@@ -8,6 +8,7 @@ import { TextSectionTemplate } from '../components/homePageSections/TextSectionT
 import { PartnersSectionTemplate } from '../components/homePageSections/PartnersSectionTemplate'
 import { PeopleSectionTemplate } from '../components/homePageSections/PeopleSectionTemplate'
 import { TilesGalleryTemplate } from '../components/homePageSections/TilesGalleryTemplate'
+import { SpeakersSectionTemplate } from '../components/homePageSections/SpeakersSectionTemplate'
 import { IndexPageQuery } from '../../types/graphql-types'
 
 interface IndexPageProps {
@@ -50,6 +51,13 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
               case 'masnory':
                 return (
                   <TilesGalleryTemplate key={section.title} section={section} />
+                )
+              case 'speakers':
+                return (
+                  <SpeakersSectionTemplate
+                    key={section.title}
+                    section={section}
+                  />
                 )
               default:
                 return (

@@ -1,0 +1,145 @@
+import React from 'react'
+import styled from 'styled-components'
+import { MdContent } from '../../MdContent'
+import { SectionTitle } from '../../UI/SectionTitle'
+
+import sectionBG from '../../../../content/assets/cloudBg.jpg'
+
+interface SpeakersSectionTemplateProps {
+  section: SectionProps
+}
+
+interface SectionProps {
+  title?: string
+  content?: string
+  images?: Images[]
+}
+
+interface Images {
+  imgUrl: string
+  name: string
+  role: string
+}
+
+export const SpeakersSectionTemplate: React.FC<SpeakersSectionTemplateProps> = ({
+  section,
+}) => {
+  const { title, content, images } = section
+  console.log(images)
+  return (
+    <SectionBackground backgroundImg={sectionBG}>
+      <Wrapper>
+        <SectionTitle>{title}</SectionTitle>
+        <MdContent md={content} />
+        <ImageList centerList={images && images.length <= 4}>
+          {images &&
+            images.length > 0 &&
+            images.map(image => (
+              <ListItem key={image.name}>
+                <ListItemContent>
+                  <PersonPhotoWrapper>
+                    <StyledImg
+                      src={image.imgUrl}
+                      alt={`${image.name} ${image.role}`}
+                    />
+                  </PersonPhotoWrapper>
+                  <NameWrapper>{image.name}</NameWrapper>
+                  {image.role && <RoleWrapper>{image.role}</RoleWrapper>}
+                </ListItemContent>
+              </ListItem>
+            ))}
+        </ImageList>
+      </Wrapper>
+    </SectionBackground>
+  )
+}
+
+const SectionBackground = styled.div<{ backgroundImg: string }>`
+  width: 100%;
+  background-image: url(${props => props.backgroundImg});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+`
+
+const Wrapper = styled.section`
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 2em 2em;
+  text-align: center;
+`
+const ImageList = styled.div<{ centerList: boolean }>`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -19px;
+  justify-content: ${props =>
+    props.centerList ? 'space-around' : 'flex-start'};
+`
+
+const ListItem = styled.div`
+  width: 50%;
+  padding: 0 1em;
+  margin-bottom: 3em;
+
+  @media screen and (min-width: 767px) {
+    width: 25%;
+    margin-bottom: 5em;
+  }
+`
+const ListItemContent = styled.div`
+  position: relative;
+  padding-bottom: 10px;
+  z-index: 2;
+  transform: scale();
+  transition: all 0.2s ease-in-out;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: ${props => props.theme.secondaryColor};
+    z-index: -1;
+    opacity: 0.2;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`
+
+const PersonPhotoWrapper = styled.div`
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  margin-bottom: 22px;
+  overflow: hidden;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+`
+
+const StyledImg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
+const NameWrapper = styled.p`
+  font-size: 1.4em;
+  margin-bottom: 0.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+
+const RoleWrapper = styled.p`
+  margin-bottom: 0.8em;
+  font-size: 0.8em;
+  line-height: 1.3em;
+`
