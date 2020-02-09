@@ -1443,15 +1443,15 @@ export type MdxFieldsEnum =
   'frontmatter___sections___title' |
   'frontmatter___sections___content' |
   'frontmatter___sections___images' |
-  'frontmatter___sections___images___alt' |
   'frontmatter___sections___images___imgUrl' |
-  'frontmatter___sections___images___linkUrl' |
   'frontmatter___sections___images___name' |
   'frontmatter___sections___images___role' |
+  'frontmatter___sections___images___alt' |
+  'frontmatter___sections___images___linkUrl' |
   'frontmatter___sections___images___socials' |
+  'frontmatter___sections___images___title' |
   'frontmatter___sections___images___width' |
   'frontmatter___sections___images___height' |
-  'frontmatter___sections___images___title' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1620,27 +1620,27 @@ export type MdxFrontmatterSectionsFilterListInput = {
 };
 
 export type MdxFrontmatterSectionsImages = {
-  alt?: Maybe<Scalars['String']>,
   imgUrl?: Maybe<Scalars['String']>,
-  linkUrl?: Maybe<Scalars['String']>,
   name?: Maybe<Scalars['String']>,
   role?: Maybe<Scalars['String']>,
+  alt?: Maybe<Scalars['String']>,
+  linkUrl?: Maybe<Scalars['String']>,
   socials?: Maybe<Array<Maybe<MdxFrontmatterSectionsImagesSocials>>>,
+  title?: Maybe<Scalars['String']>,
   width?: Maybe<Scalars['Int']>,
   height?: Maybe<Scalars['Int']>,
-  title?: Maybe<Scalars['String']>,
 };
 
 export type MdxFrontmatterSectionsImagesFilterInput = {
-  alt?: Maybe<StringQueryOperatorInput>,
   imgUrl?: Maybe<StringQueryOperatorInput>,
-  linkUrl?: Maybe<StringQueryOperatorInput>,
   name?: Maybe<StringQueryOperatorInput>,
   role?: Maybe<StringQueryOperatorInput>,
+  alt?: Maybe<StringQueryOperatorInput>,
+  linkUrl?: Maybe<StringQueryOperatorInput>,
   socials?: Maybe<MdxFrontmatterSectionsImagesSocialsFilterListInput>,
+  title?: Maybe<StringQueryOperatorInput>,
   width?: Maybe<IntQueryOperatorInput>,
   height?: Maybe<IntQueryOperatorInput>,
-  title?: Maybe<StringQueryOperatorInput>,
 };
 
 export type MdxFrontmatterSectionsImagesFilterListInput = {
@@ -1946,8 +1946,6 @@ export type QuerySiteArgs = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
   port?: Maybe<IntQueryOperatorInput>,
   host?: Maybe<StringQueryOperatorInput>,
-  polyfill?: Maybe<BooleanQueryOperatorInput>,
-  pathPrefix?: Maybe<StringQueryOperatorInput>,
   buildTime?: Maybe<DateQueryOperatorInput>
 };
 
@@ -2017,8 +2015,6 @@ export type Site = Node & {
   siteMetadata?: Maybe<SiteSiteMetadata>,
   port?: Maybe<Scalars['Int']>,
   host?: Maybe<Scalars['String']>,
-  polyfill?: Maybe<Scalars['Boolean']>,
-  pathPrefix?: Maybe<Scalars['String']>,
   buildTime?: Maybe<Scalars['Date']>,
 };
 
@@ -2151,10 +2147,12 @@ export type SiteFieldsEnum =
   'siteMetadata___logo' |
   'siteMetadata___fbPageId' |
   'siteMetadata___dateModified' |
+  'siteMetadata___footer' |
+  'siteMetadata___footer___role' |
+  'siteMetadata___footer___people' |
+  'siteMetadata___footer___links' |
   'port' |
   'host' |
-  'polyfill' |
-  'pathPrefix' |
   'buildTime';
 
 export type SiteFilterInput = {
@@ -2165,8 +2163,6 @@ export type SiteFilterInput = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
   port?: Maybe<IntQueryOperatorInput>,
   host?: Maybe<StringQueryOperatorInput>,
-  polyfill?: Maybe<BooleanQueryOperatorInput>,
-  pathPrefix?: Maybe<StringQueryOperatorInput>,
   buildTime?: Maybe<DateQueryOperatorInput>,
 };
 
@@ -3063,6 +3059,7 @@ export type SiteSiteMetadata = {
   logo?: Maybe<Scalars['String']>,
   fbPageId?: Maybe<Scalars['String']>,
   dateModified?: Maybe<Scalars['Date']>,
+  footer?: Maybe<Array<Maybe<SiteSiteMetadataFooter>>>,
 };
 
 
@@ -3081,6 +3078,23 @@ export type SiteSiteMetadataFilterInput = {
   logo?: Maybe<StringQueryOperatorInput>,
   fbPageId?: Maybe<StringQueryOperatorInput>,
   dateModified?: Maybe<DateQueryOperatorInput>,
+  footer?: Maybe<SiteSiteMetadataFooterFilterListInput>,
+};
+
+export type SiteSiteMetadataFooter = {
+  role?: Maybe<Scalars['String']>,
+  people?: Maybe<Array<Maybe<Scalars['String']>>>,
+  links?: Maybe<Array<Maybe<Scalars['String']>>>,
+};
+
+export type SiteSiteMetadataFooterFilterInput = {
+  role?: Maybe<StringQueryOperatorInput>,
+  people?: Maybe<StringQueryOperatorInput>,
+  links?: Maybe<StringQueryOperatorInput>,
+};
+
+export type SiteSiteMetadataFooterFilterListInput = {
+  elemMatch?: Maybe<SiteSiteMetadataFooterFilterInput>,
 };
 
 export type SiteSortInput = {
@@ -3101,15 +3115,20 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>,
 };
 
+export type Unnamed_1_QueryVariables = {};
+
+
+export type Unnamed_1_Query = { site: Maybe<{ siteMetadata: Maybe<{ footer: Maybe<Array<Maybe<Pick<SiteSiteMetadataFooter, 'role' | 'people' | 'links'>>>> }> }> };
+
 export type SearchIndexQueryQueryVariables = {};
 
 
 export type SearchIndexQueryQuery = { siteSearchIndex: Maybe<Pick<SiteSearchIndex, 'index'>> };
 
-export type Unnamed_1_QueryVariables = {};
+export type Unnamed_2_QueryVariables = {};
 
 
-export type Unnamed_1_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'siteUrl' | 'logo' | 'fbPageId' | 'dateModified'>> }> };
+export type Unnamed_2_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'siteUrl' | 'logo' | 'fbPageId' | 'dateModified'>> }> };
 
 export type IndexPageQueryVariables = {};
 
@@ -3125,10 +3144,10 @@ export type IndexPageQuery = { mdx: Maybe<(
       )>>> }> }
   )> };
 
-export type Unnamed_2_QueryVariables = {};
+export type Unnamed_3_QueryVariables = {};
 
 
-export type Unnamed_2_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type Unnamed_3_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 export type BlogPostBySlugQueryVariables = {
   slug: Scalars['String']
@@ -3140,10 +3159,10 @@ export type BlogPostBySlugQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteS
     & { frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'date' | 'description'>> }
   )> };
 
-export type Unnamed_3_QueryVariables = {};
+export type Unnamed_4_QueryVariables = {};
 
 
-export type Unnamed_3_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type Unnamed_4_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 export type ProductBySlugQueryVariables = {
   slug: Scalars['String']

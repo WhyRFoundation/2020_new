@@ -7,6 +7,18 @@ module.exports = {
     logo: `content/assets/gatsby-icon.png`,
     fbPageId: `YOUR_FB_PAGE_ID`,
     dateModified: new Date(),
+    footer: [
+      {
+        role: 'Design & Creator',
+        people: ['Emil Buszyło'],
+        links: ['https://www.linkedin.com/in/emil-buszy%C5%82o-6a6708139/'],
+      },
+      {
+        role: 'Content',
+        people: ['Michał Burdukiewicz', 'Marcin Kosiński'],
+        links: ['', 'https://r-addict.com/'],
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-typescript`,
