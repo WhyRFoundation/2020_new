@@ -17,7 +17,7 @@ export const TextSectionTemplate: React.FC<TextSectionTemplateProps> = ({
 }) => {
   const { title, content } = section
   return (
-    <Wrapper>
+    <Wrapper id={title}>
       <SectionTitle>{title}</SectionTitle>
       <MdContent md={content} />
     </Wrapper>

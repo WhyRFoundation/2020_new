@@ -42,17 +42,6 @@ export const Navigation: React.FC<NavigationProps> = ({ scrollHeight }) => {
     }
   }, [])
 
-  // const scrollToHandler = () => {
-  //   const element = document.getElementById('contactForm')
-
-  //   setTimeout(() => {
-  //     window.scrollTo({
-  //       behavior: 'smooth',
-  //       top: element ? element.offsetTop : 0,
-  //     })
-  //   }, 100)
-  // }
-
   return (
     <Wrapper fillNav={fillNav}>
       <StyledNav>
@@ -64,7 +53,7 @@ export const Navigation: React.FC<NavigationProps> = ({ scrollHeight }) => {
         <LinkWrapper>
           <NavigationLink
             isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
+            onClick={() => scrollToHandler('About')}
           >
             About
           </NavigationLink>
@@ -72,7 +61,7 @@ export const Navigation: React.FC<NavigationProps> = ({ scrollHeight }) => {
         <LinkWrapper>
           <NavigationLink
             isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
+            onClick={() => scrollToHandler('2020 KEYNOTES')}
           >
             Speakers
           </NavigationLink>
@@ -80,7 +69,7 @@ export const Navigation: React.FC<NavigationProps> = ({ scrollHeight }) => {
         <LinkWrapper>
           <NavigationLink
             isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
+            onClick={() => scrollToHandler('WHY R? 2020 PRE-MEETINGS')}
           >
             PRE-MEETINGS
           </NavigationLink>
@@ -88,17 +77,9 @@ export const Navigation: React.FC<NavigationProps> = ({ scrollHeight }) => {
         <LinkWrapper>
           <NavigationLink
             isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
+            onClick={() => scrollToHandler('ORGANIZERS')}
           >
             ORGANIZERS
-          </NavigationLink>
-        </LinkWrapper>
-        <LinkWrapper>
-          <NavigationLink
-            isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
-          >
-            CODE OF CONDUCT
           </NavigationLink>
         </LinkWrapper>
       </StyledNav>

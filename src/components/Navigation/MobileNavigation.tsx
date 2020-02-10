@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import { scrollToHandler } from '../Utils/scrollUtils'
 import { NavigationIcon } from './NavigationIcon'
 import { NavigationLink } from './NavigationLink'
+import whyrLogo from '../../../content/assets/whyrnieb-white.png'
 
 interface MobileNavigationProps {
   scrollHeight: number
@@ -51,7 +52,9 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
   return (
     <Wrapper fillNav={fillNav} isOpen={isOpen}>
       <NavigationBar>
-        <NavigationLink path="/">Logo</NavigationLink>
+        <NavigationLink path="/">
+          <LogoLink src={whyrLogo} />
+        </NavigationLink>
         <NavigationIcon isOpen={isOpen} onClick={toggleHandler} />
       </NavigationBar>
       <LeftSideMenu isOpen={isOpen}>
@@ -63,7 +66,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
         <LinkWrapper>
           <MobileStyledLink
             isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
+            onClick={() => scrollToHandler('About')}
           >
             About
           </MobileStyledLink>
@@ -71,7 +74,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
         <LinkWrapper>
           <MobileStyledLink
             isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
+            onClick={() => scrollToHandler('2020 KEYNOTES')}
           >
             Speakers
           </MobileStyledLink>
@@ -79,7 +82,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
         <LinkWrapper>
           <MobileStyledLink
             isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
+            onClick={() => scrollToHandler('WHY R? 2020 PRE-MEETINGS')}
           >
             PRE-MEETINGS
           </MobileStyledLink>
@@ -87,20 +90,12 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
         <LinkWrapper>
           <MobileStyledLink
             isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
+            onClick={() => scrollToHandler('ORGANIZERS')}
           >
             ORGANIZERS
           </MobileStyledLink>
         </LinkWrapper>
-        <LinkWrapper>
-          <MobileStyledLink
-            isLink={false}
-            onClick={() => scrollToHandler('contactForm')}
-          >
-            CODE OF CONDUCT
-          </MobileStyledLink>
-        </LinkWrapper>
-        <LinkWrapper>
+        {/* <LinkWrapper>
           <MobileStyledLink
             isLink={false}
             onClick={() => scrollToHandler('contactForm')}
@@ -115,7 +110,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
           >
             SOCIAL MEDIA SECTION
           </MobileStyledLink>
-        </LinkWrapper>
+        </LinkWrapper> */}
       </LeftSideMenu>
     </Wrapper>
   )
@@ -180,4 +175,11 @@ const MobileStyledLink = styled(NavigationLink)`
 const LinkWrapper = styled.li`
   width: 100%;
   height: 3.5em;
+`
+
+const LogoLink = styled.img`
+  max-width: 3.3em;
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
 `

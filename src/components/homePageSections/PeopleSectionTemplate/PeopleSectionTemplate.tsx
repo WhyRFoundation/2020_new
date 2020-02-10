@@ -49,7 +49,7 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
   }
 
   return (
-    <Wrapper>
+    <Wrapper id={title}>
       <SectionTitle>{title}</SectionTitle>
       <MdContent md={content} />
       <PeopleList centerList={images.length <= 4}>

@@ -27,7 +27,7 @@ export const TilesGalleryTemplate: React.FC<TilesGalleryProps> = ({
         defaultStyles="display: none;"
         mediaStyles="display: block;"
       >
-        <Wrapper>
+        <Wrapper id={title}>
           <SectionTitle>{title}</SectionTitle>
           <DesktopTilesGalleryTemplate images={images} />
         </Wrapper>
@@ -36,7 +36,7 @@ export const TilesGalleryTemplate: React.FC<TilesGalleryProps> = ({
         defaultStyles="display: block;"
         mediaStyles="display: none;"
       >
-        <Wrapper isMobile>
+        <Wrapper isMobile id={title}>
           <MobileTilesGalleryTemplate images={images} title={title} />
         </Wrapper>
       </MediaQueryWrapper>

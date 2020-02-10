@@ -28,7 +28,7 @@ export const SpeakersSectionTemplate: React.FC<SpeakersSectionTemplateProps> = (
   console.log(images)
   return (
     <SectionBackground backgroundImg={sectionBG}>
-      <Wrapper>
+      <Wrapper id={title}>
         <SectionTitle>{title}</SectionTitle>
         <MdContent md={content} />
         <ImageList centerList={images && images.length <= 4}>
