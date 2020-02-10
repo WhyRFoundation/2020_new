@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { MdContent } from '../../MdContent'
 import { SectionTitle } from '../../UI/SectionTitle'
-import { TileItemProps, TileItem } from './TileItem'
+import { TileItemProps } from './TileItem'
+import { MobileTilesGalleryTemplate } from './MobileTilesGalleryTemplate'
+import { DesktopTilesGalleryTemplate } from './DesktopTilesGalleryTemplate'
+import { MediaQueryWrapper } from '../../UI/MediaQueryWrapper'
 
 interface TilesGalleryProps {
   section: SectionProps
@@ -11,57 +13,40 @@ interface TilesGalleryProps {
 
 interface SectionProps {
   title?: string
-  content?: string
   images?: TileItemProps[]
 }
 
 export const TilesGalleryTemplate: React.FC<TilesGalleryProps> = ({
   section,
 }) => {
-  const { title, content, images } = section
+  const { title, images } = section
 
   return (
-    <Wrapper>
-      <SectionTitle>{title}</SectionTitle>
-      <MdContent md={content} />
-      <ImagesGrid>
-        {images.map((image, index) => (
-          <TileItem
-            key={image.title}
-            linkUrl={image.linkUrl}
-            imgUrl={image.imgUrl}
-            title={image.title}
-            col={index + 1}
-          />
-        ))}
-      </ImagesGrid>
-    </Wrapper>
+    <>
+      <MediaQueryWrapper
+        defaultStyles="display: none;"
+        mediaStyles="display: block;"
+      >
+        <Wrapper>
+          <SectionTitle>{title}</SectionTitle>
+          <DesktopTilesGalleryTemplate images={images} />
+        </Wrapper>
+      </MediaQueryWrapper>
+      <MediaQueryWrapper
+        defaultStyles="display: block;"
+        mediaStyles="display: none;"
+      >
+        <Wrapper isMobile>
+          <MobileTilesGalleryTemplate images={images} title={title} />
+        </Wrapper>
+      </MediaQueryWrapper>
+    </>
   )
 }
 
-const Wrapper = styled.section`
+const Wrapper = styled.section<{ isMobile?: boolean }>`
   margin: 0 auto;
   max-width: 980px;
-  padding: 2em 2em;
+  padding: 2em ${props => (!props.isMobile ? '2em' : '0em')};
   text-align: center;
-`
-
-const ImagesGrid = styled.div`
-  max-width: 980px;
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(auto, 217px));
-  grid-auto-rows: 170px;
-  grid-gap: 1rem;
-  grid-auto-flow: dense;
-  text-align: center;
-  justify-content: center;
-
-  @media screen and (min-width: 767px) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(auto, 217px));
-    grid-auto-rows: 170px;
-    grid-gap: 1rem;
-  }
 `

@@ -88,8 +88,6 @@ export const pageQuery = graphql`
             linkUrl
             name
             role
-            width
-            height
             title
             socials {
               source

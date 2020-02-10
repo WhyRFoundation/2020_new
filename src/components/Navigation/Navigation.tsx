@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 
 import { scrollToHandler } from '../Utils/scrollUtils'
 import { NavigationLink } from './NavigationLink'
+import whyrLogo from '../../../content/assets/whyrnieb-white.png'
 
 interface NavigationProps {
   scrollHeight: number
@@ -55,12 +56,9 @@ export const Navigation: React.FC<NavigationProps> = ({ scrollHeight }) => {
   return (
     <Wrapper fillNav={fillNav}>
       <StyledNav>
-        <NavigationLink path="/">Logo</NavigationLink>
-        <LinkWrapper>
-          <NavigationLink isExternal path="http://whyr.pl/foundation/#blog">
-            BLOG
-          </NavigationLink>
-        </LinkWrapper>
+        <NavigationLink path="/http://whyr.pl/foundation/#blog">
+          <LogoLink src={whyrLogo} alt="whyR? logo" />
+        </NavigationLink>
       </StyledNav>
       <StyledNav>
         <LinkWrapper>
@@ -141,4 +139,11 @@ const StyledNav = styled.nav`
 const LinkWrapper = styled.li`
   padding-left: 1.5em;
   display: inline-block;
+`
+
+const LogoLink = styled.img`
+  max-width: 3.3em;
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
 `

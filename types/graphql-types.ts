@@ -1450,8 +1450,6 @@ export type MdxFieldsEnum =
   'frontmatter___sections___images___linkUrl' |
   'frontmatter___sections___images___socials' |
   'frontmatter___sections___images___title' |
-  'frontmatter___sections___images___width' |
-  'frontmatter___sections___images___height' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1627,8 +1625,6 @@ export type MdxFrontmatterSectionsImages = {
   linkUrl?: Maybe<Scalars['String']>,
   socials?: Maybe<Array<Maybe<MdxFrontmatterSectionsImagesSocials>>>,
   title?: Maybe<Scalars['String']>,
-  width?: Maybe<Scalars['Int']>,
-  height?: Maybe<Scalars['Int']>,
 };
 
 export type MdxFrontmatterSectionsImagesFilterInput = {
@@ -1639,8 +1635,6 @@ export type MdxFrontmatterSectionsImagesFilterInput = {
   linkUrl?: Maybe<StringQueryOperatorInput>,
   socials?: Maybe<MdxFrontmatterSectionsImagesSocialsFilterListInput>,
   title?: Maybe<StringQueryOperatorInput>,
-  width?: Maybe<IntQueryOperatorInput>,
-  height?: Maybe<IntQueryOperatorInput>,
 };
 
 export type MdxFrontmatterSectionsImagesFilterListInput = {
@@ -1990,8 +1984,8 @@ export type QuerySitePageArgs = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
-  path?: Maybe<StringQueryOperatorInput>,
   internalComponentName?: Maybe<StringQueryOperatorInput>,
+  path?: Maybe<StringQueryOperatorInput>,
   component?: Maybe<StringQueryOperatorInput>,
   componentChunkName?: Maybe<StringQueryOperatorInput>,
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>,
@@ -2188,8 +2182,8 @@ export type SitePage = Node & {
   parent?: Maybe<Node>,
   children: Array<Node>,
   internal: Internal,
-  path?: Maybe<Scalars['String']>,
   internalComponentName?: Maybe<Scalars['String']>,
+  path?: Maybe<Scalars['String']>,
   component?: Maybe<Scalars['String']>,
   componentChunkName?: Maybe<Scalars['String']>,
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>,
@@ -2381,8 +2375,8 @@ export type SitePageFieldsEnum =
   'internal___mediaType' |
   'internal___owner' |
   'internal___type' |
-  'path' |
   'internalComponentName' |
+  'path' |
   'component' |
   'componentChunkName' |
   'isCreatedByStatefulCreatePages' |
@@ -2486,8 +2480,8 @@ export type SitePageFilterInput = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
-  path?: Maybe<StringQueryOperatorInput>,
   internalComponentName?: Maybe<StringQueryOperatorInput>,
+  path?: Maybe<StringQueryOperatorInput>,
   component?: Maybe<StringQueryOperatorInput>,
   componentChunkName?: Maybe<StringQueryOperatorInput>,
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>,
@@ -3146,7 +3140,7 @@ export type IndexPageQuery = { mdx: Maybe<(
     & { frontmatter: Maybe<{ sections: Maybe<Array<Maybe<(
         Pick<MdxFrontmatterSections, 'title' | 'type' | 'content'>
         & { images: Maybe<Array<Maybe<(
-          Pick<MdxFrontmatterSectionsImages, 'alt' | 'imgUrl' | 'linkUrl' | 'name' | 'role' | 'width' | 'height' | 'title'>
+          Pick<MdxFrontmatterSectionsImages, 'alt' | 'imgUrl' | 'linkUrl' | 'name' | 'role' | 'title'>
           & { socials: Maybe<Array<Maybe<Pick<MdxFrontmatterSectionsImagesSocials, 'source' | 'sourceUrl'>>>> }
         )>>> }
       )>>> }> }
