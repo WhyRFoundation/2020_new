@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { MdContent } from '../../MdContent'
 import { SectionTitle } from '../../UI/SectionTitle'
 import { FaLinkedin, FaGithubSquare } from 'react-icons/fa'
-import { IoMdGlobe } from 'react-icons/io'
+import { IoMdGlobe, IoLogoFacebook } from 'react-icons/io'
 
 interface PeopleSectionTemplateProps {
   section: SectionProps
@@ -41,6 +41,8 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
         return <FaGithubSquare />
       case 'website':
         return <IoMdGlobe />
+      case 'facebookc':
+        return <IoLogoFacebook />
       default:
         break
     }
