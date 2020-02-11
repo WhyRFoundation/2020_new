@@ -16,7 +16,10 @@ module.exports = {
       {
         role: 'Content',
         people: ['Michał Burdukiewicz', 'Marcin Kosiński'],
-        links: ['', 'https://r-addict.com/'],
+        links: [
+          'https://www.researchgate.net/profile/Michal_Burdukiewicz',
+          'https://r-addict.com/',
+        ],
       },
     ],
   },
