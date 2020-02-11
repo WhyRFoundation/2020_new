@@ -47,14 +47,18 @@ export const TileItem: React.FC<TileItemProps> = ({
             </GridItemTextWrapper>
           </EmptyBox>
         </GridImage>
-        <GridItemText id="gridItemText"></GridItemText>
+        <GridItemText id="gridItemText">
+          <GridItemTextWrapper>
+            <GridItemTitle>{title}</GridItemTitle>
+          </GridItemTextWrapper>
+        </GridItemText>
         <GridItemLink href={linkUrl} />
       </>
     )}
   </GridItem>
 )
 
-const StyledImg = styled.div<{ src }>`
+const StyledImg = styled.div<{ src: string }>`
   background-image: url(${props => props.src});
   background-repeat: no-repeat;
   background-size: cover;
@@ -142,10 +146,10 @@ const GridItemTextWrapper = styled.div`
 `
 
 const GridItemTitle = styled.h6`
-  font-weight: normal;
-  font-size: 16px;
-  padding: 0 15px;
-  margin: 5px 0 0 0;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0 0.9em;
+  margin: 0.3em 0 0 0;
 `
 
 const GridItemLink = styled.a`
