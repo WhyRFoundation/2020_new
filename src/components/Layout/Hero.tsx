@@ -8,8 +8,6 @@ interface HeroProps {
   subtitle?: string
 }
 
-// TODO mobile version, content on viedo bg, fork of pluign
-
 export const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
   return (
     <Wrapper heroImg={heroImg}>

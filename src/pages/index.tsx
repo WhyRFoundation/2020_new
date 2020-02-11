@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { LocationProvider } from '@reach/router'
 
+import { IndexPageQuery } from '../../types/graphql-types'
 import { Layout } from '../components/Layout'
 import { Seo } from '../components/Seo'
 import { TextSectionTemplate } from '../components/homePageSections/TextSectionTemplate'
@@ -9,7 +10,6 @@ import { PartnersSectionTemplate } from '../components/homePageSections/Partners
 import { PeopleSectionTemplate } from '../components/homePageSections/PeopleSectionTemplate'
 import { TilesGalleryTemplate } from '../components/homePageSections/TilesGalleryTemplate'
 import { SpeakersSectionTemplate } from '../components/homePageSections/SpeakersSectionTemplate'
-import { IndexPageQuery } from '../../types/graphql-types'
 
 interface IndexPageProps {
   data: IndexPageQuery
@@ -48,7 +48,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
                     section={section}
                   />
                 )
-              case 'masnory':
+              case 'gallery':
                 return (
                   <TilesGalleryTemplate key={section.title} section={section} />
                 )
@@ -83,7 +83,6 @@ export const pageQuery = graphql`
           type
           content
           images {
-            alt
             imgUrl
             linkUrl
             name

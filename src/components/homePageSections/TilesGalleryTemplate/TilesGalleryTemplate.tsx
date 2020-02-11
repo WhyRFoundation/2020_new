@@ -1,11 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import { SectionTitle } from '../../UI/SectionTitle'
 import { TileItemProps } from './TileItem'
 import { MobileTilesGalleryTemplate } from './MobileTilesGalleryTemplate'
 import { DesktopTilesGalleryTemplate } from './DesktopTilesGalleryTemplate'
 import { MediaQueryWrapper } from '../../UI/MediaQueryWrapper'
+import { SectionWrapper } from '../../UI/SectionWrapper'
 
 interface TilesGalleryProps {
   section: SectionProps
@@ -27,26 +27,19 @@ export const TilesGalleryTemplate: React.FC<TilesGalleryProps> = ({
         defaultStyles="display: none;"
         mediaStyles="display: block;"
       >
-        <Wrapper id={title}>
+        <SectionWrapper id={title}>
           <SectionTitle>{title}</SectionTitle>
           <DesktopTilesGalleryTemplate images={images} />
-        </Wrapper>
+        </SectionWrapper>
       </MediaQueryWrapper>
       <MediaQueryWrapper
         defaultStyles="display: block;"
         mediaStyles="display: none;"
       >
-        <Wrapper isMobile id={title}>
+        <SectionWrapper isGlued id={title}>
           <MobileTilesGalleryTemplate images={images} title={title} />
-        </Wrapper>
+        </SectionWrapper>
       </MediaQueryWrapper>
     </>
   )
 }
-
-const Wrapper = styled.section<{ isMobile?: boolean }>`
-  margin: 0 auto;
-  max-width: 980px;
-  padding: 2em ${props => (!props.isMobile ? '2em' : '0em')};
-  text-align: center;
-`

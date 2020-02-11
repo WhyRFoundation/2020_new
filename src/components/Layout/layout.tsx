@@ -13,8 +13,6 @@ import { Navigation, MobileNavigation } from '../Navigation'
 import { MediaQueryWrapper } from '../UI/MediaQueryWrapper'
 import { Footer } from './Footer'
 
-interface LayoutProps {}
-
 const GlobalStyle = createGlobalStyle`
   body {
     ${reset};
@@ -51,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
 const source = createMemorySource('/')
 const history = createHistory(source)
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC<{}> = ({ children }) => {
   const [heroHeight, setHeroHeight] = useState<number>(0)
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -115,7 +113,6 @@ const Wrapper = styled.div`
 
 const PageContent = styled.main`
   width: 100%;
-  /* max-width: 980px; */
   margin: 32px auto;
   min-height: 150vh;
   height: 100%;

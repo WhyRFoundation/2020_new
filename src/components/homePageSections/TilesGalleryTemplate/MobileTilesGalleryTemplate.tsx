@@ -16,7 +16,6 @@ export const MobileTilesGalleryTemplate: React.FC<TilesGalleryProps> = ({
   return (
     <MobileWrapper>
       <MobileHeader>
-        {' '}
         <SectionTitle>{title}</SectionTitle>
       </MobileHeader>
       <MobileTillsWrapper>
@@ -24,15 +23,15 @@ export const MobileTilesGalleryTemplate: React.FC<TilesGalleryProps> = ({
           <MobileTillsList>
             {images.map(image => (
               <MobileTillsItem>
-                <GridItemLink href={image.linkUrl}>
+                <a href={image.linkUrl}>
                   {image.imgUrl ? (
-                    <Img src={image.imgUrl} />
+                    <StyledImg src={image.imgUrl} />
                   ) : (
                     <EmptyItem>
-                      <GridItemTitle>{image.title}</GridItemTitle>
+                      <TileItemTitle>{image.title}</TileItemTitle>
                     </EmptyItem>
                   )}
-                </GridItemLink>
+                </a>
               </MobileTillsItem>
             ))}
           </MobileTillsList>
@@ -98,8 +97,6 @@ const MobileTillsItem = styled.div`
   max-width: 232px;
 `
 
-const GridItemLink = styled.a``
-
 const EmptyItem = styled.div`
   background: ${props => props.theme.primaryColor};
   height: 263px;
@@ -112,7 +109,7 @@ const EmptyItem = styled.div`
   align-items: center;
 `
 
-const GridItemTitle = styled.h6`
+const TileItemTitle = styled.h6`
   font-weight: 700;
   font-size: 1.4em;
   padding: 0 1em;
@@ -120,7 +117,7 @@ const GridItemTitle = styled.h6`
   color: ${props => props.theme.primaryTextColor};
 `
 
-const Img = styled.div<{ src: string }>`
+const StyledImg = styled.div<{ src: string }>`
   background-image: url(${props => props.src});
   background-repeat: no-repeat;
   background-size: cover;

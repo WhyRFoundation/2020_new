@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import { MdContent } from '../../MdContent'
 import { SectionTitle } from '../../UI/SectionTitle'
+import { SectionWrapper } from '../../UI/SectionWrapper'
 
 interface TextSectionTemplateProps {
   section: SectionProps
@@ -17,16 +17,9 @@ export const TextSectionTemplate: React.FC<TextSectionTemplateProps> = ({
 }) => {
   const { title, content } = section
   return (
-    <Wrapper id={title}>
+    <SectionWrapper id={title}>
       <SectionTitle>{title}</SectionTitle>
       <MdContent md={content} />
-    </Wrapper>
+    </SectionWrapper>
   )
 }
-
-const Wrapper = styled.section`
-  margin: 0 auto;
-  max-width: 980px;
-  padding: 2em 2em;
-  text-align: center;
-`

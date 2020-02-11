@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { MdContent } from '../../MdContent'
 import { SectionTitle } from '../../UI/SectionTitle'
+import { SectionWrapper } from '../../UI/SectionWrapper'
 
 interface PartnersSectionTemplateProps {
   section: SectionProps
@@ -14,7 +15,7 @@ interface SectionProps {
 }
 
 interface Images {
-  alt: string
+  title: string
   imgUrl: string
   linkUrl: string
 }
@@ -24,28 +25,21 @@ export const PartnersSectionTemplate: React.FC<PartnersSectionTemplateProps> = (
 }) => {
   const { title, content, images } = section
   return (
-    <Wrapper id={title}>
+    <SectionWrapper id={title}>
       <SectionTitle>{title}</SectionTitle>
       <MdContent md={content} />
       <ImagesContainer>
         {images &&
           images.length > 0 &&
           images.map(image => (
-            <StyledLink href={image.linkUrl} key={image.alt} target="_blank">
-              <StyledImg src={image.imgUrl} alt={image.alt} />
+            <StyledLink href={image.linkUrl} key={image.title} target="_blank">
+              <StyledImg src={image.imgUrl} alt={image.title} />
             </StyledLink>
           ))}
       </ImagesContainer>
-    </Wrapper>
+    </SectionWrapper>
   )
 }
-
-const Wrapper = styled.section`
-  margin: 0 auto;
-  max-width: 980px;
-  padding: 2em 2em;
-  text-align: center;
-`
 
 const ImagesContainer = styled.div`
   display: grid;

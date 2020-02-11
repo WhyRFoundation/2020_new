@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { MdContent } from '../../MdContent'
 import { SectionTitle } from '../../UI/SectionTitle'
+import { SectionWrapper } from '../../UI/SectionWrapper'
+import { StyledImg } from '../../UI/StyledImg'
 
 import sectionBG from '../../../../content/assets/cloudBg.jpg'
 
@@ -25,10 +27,9 @@ export const SpeakersSectionTemplate: React.FC<SpeakersSectionTemplateProps> = (
   section,
 }) => {
   const { title, content, images } = section
-  console.log(images)
   return (
     <SectionBackground backgroundImg={sectionBG}>
-      <Wrapper id={title}>
+      <SectionWrapper id={title}>
         <SectionTitle>{title}</SectionTitle>
         <MdContent md={content} />
         <ImageList centerList={images && images.length <= 4}>
@@ -49,7 +50,7 @@ export const SpeakersSectionTemplate: React.FC<SpeakersSectionTemplateProps> = (
               </ListItem>
             ))}
         </ImageList>
-      </Wrapper>
+      </SectionWrapper>
     </SectionBackground>
   )
 }
@@ -63,12 +64,6 @@ const SectionBackground = styled.div<{ backgroundImg: string }>`
   background-attachment: fixed;
 `
 
-const Wrapper = styled.section`
-  margin: 0 auto;
-  max-width: 980px;
-  padding: 2em 2em;
-  text-align: center;
-`
 const ImageList = styled.div<{ centerList: boolean }>`
   display: flex;
   flex-wrap: wrap;
@@ -123,14 +118,6 @@ const PersonPhotoWrapper = styled.div`
   flex-direction: column;
 `
 
-const StyledImg = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`
 const NameWrapper = styled.p`
   font-size: 1.4em;
   margin-bottom: 0.4em;

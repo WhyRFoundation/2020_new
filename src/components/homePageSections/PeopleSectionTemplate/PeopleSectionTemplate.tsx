@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { MdContent } from '../../MdContent'
-import { SectionTitle } from '../../UI/SectionTitle'
 import { FaLinkedin, FaGithubSquare } from 'react-icons/fa'
 import { IoMdGlobe, IoLogoFacebook } from 'react-icons/io'
+
+import { MdContent } from '../../MdContent'
+import { SectionTitle } from '../../UI/SectionTitle'
+import { SectionWrapper } from '../../UI/SectionWrapper'
+import { StyledImg } from '../../UI/StyledImg'
 
 interface PeopleSectionTemplateProps {
   section: SectionProps
@@ -49,7 +52,7 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
   }
 
   return (
-    <Wrapper id={title}>
+    <SectionWrapper id={title}>
       <SectionTitle>{title}</SectionTitle>
       <MdContent md={content} />
       <PeopleList centerList={images.length <= 4}>
@@ -79,16 +82,9 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
             </ListItem>
           ))}
       </PeopleList>
-    </Wrapper>
+    </SectionWrapper>
   )
 }
-
-const Wrapper = styled.section`
-  margin: 0 auto;
-  max-width: 980px;
-  padding: 2em 2em;
-  text-align: center;
-`
 
 const PeopleList = styled.div<{ centerList: boolean }>`
   display: flex;
@@ -143,14 +139,6 @@ const PersonPhotoWrapper = styled.div`
   flex-direction: column;
 `
 
-const StyledImg = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`
 const NameWrapper = styled.p`
   font-size: 1.4em;
   margin-bottom: 0.4em;
@@ -163,12 +151,6 @@ const RoleWrapper = styled.p`
   font-size: 0.8em;
 `
 
-const DescWrapper = styled.p`
-  font-size: 0.8em;
-  line-height: 1.68;
-  word-wrap: break-word;
-  margin-bottom: 1em;
-`
 const SocialsWrapper = styled.div`
   display: flex;
   justify-content: center;
