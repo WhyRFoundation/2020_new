@@ -18,7 +18,7 @@ export const Seo: React.FC<SeoProps> = ({
   image,
   location,
   schema,
-  lang = 'PL',
+  lang = 'en',
 }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -42,28 +42,22 @@ export const Seo: React.FC<SeoProps> = ({
   const ogImage = image || site.siteMetadata.logo
   const metaCanonical = location || site.siteMetadata.siteUrl
 
+  //TODO full event address and information about tickets
+  //TODO If schedule is a individual page, then you will need to add url
   const defaultSchema = {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': `${metaCanonical}/#website`,
-        url: metaCanonical,
-        name: '3LABteam Druk 3D Elektronika Frezowanie Warszawa',
-        description: metaDescription,
-      },
-      {
-        '@type': 'WebPage',
-        '@id': `${metaCanonical}/#website`,
-        url: metaCanonical,
-        inLanguage: 'pl-PL',
-        name: metaDescription,
-        isPartOf: { '@id': `${metaCanonical}/#website` },
-        datePublished: '2016-12-13T22:41:04+00:00',
-        dateModified: site.siteMetadata.dateModified,
-        description: metaDescription,
-      },
-    ],
+    '@type': 'Event',
+    url: metaCanonical,
+    description: metaDescription,
+    name: title,
+    eventSchedule: {
+      '@type': 'Schedule',
+      startDate: '2020-08-27',
+      endDate: '2020-08-30',
+      startTime: '9:00',
+      endTime: '18:00',
+      scheduleTimezone: 'Europe/Warsaw',
+    },
   }
 
   const schemaOrg = schema || defaultSchema

@@ -694,13 +694,14 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___title' |
   'childMdx___frontmatter___pageTemplate' |
   'childMdx___frontmatter___pagePrefixPath' |
-  'childMdx___frontmatter___date' |
   'childMdx___frontmatter___description' |
+  'childMdx___frontmatter___keywords' |
   'childMdx___frontmatter___sections' |
   'childMdx___frontmatter___sections___type' |
   'childMdx___frontmatter___sections___title' |
   'childMdx___frontmatter___sections___content' |
   'childMdx___frontmatter___sections___images' |
+  'childMdx___frontmatter___date' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1436,8 +1437,8 @@ export type MdxFieldsEnum =
   'frontmatter___title' |
   'frontmatter___pageTemplate' |
   'frontmatter___pagePrefixPath' |
-  'frontmatter___date' |
   'frontmatter___description' |
+  'frontmatter___keywords' |
   'frontmatter___sections' |
   'frontmatter___sections___type' |
   'frontmatter___sections___title' |
@@ -1449,6 +1450,7 @@ export type MdxFieldsEnum =
   'frontmatter___sections___images___title' |
   'frontmatter___sections___images___linkUrl' |
   'frontmatter___sections___images___socials' |
+  'frontmatter___date' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1576,9 +1578,10 @@ export type MdxFrontmatter = {
   title: Scalars['String'],
   pageTemplate?: Maybe<Scalars['String']>,
   pagePrefixPath?: Maybe<Scalars['String']>,
-  date?: Maybe<Scalars['Date']>,
   description?: Maybe<Scalars['String']>,
+  keywords?: Maybe<Scalars['String']>,
   sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
+  date?: Maybe<Scalars['Date']>,
 };
 
 
@@ -1593,9 +1596,10 @@ export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   pageTemplate?: Maybe<StringQueryOperatorInput>,
   pagePrefixPath?: Maybe<StringQueryOperatorInput>,
-  date?: Maybe<DateQueryOperatorInput>,
   description?: Maybe<StringQueryOperatorInput>,
+  keywords?: Maybe<StringQueryOperatorInput>,
   sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
+  date?: Maybe<DateQueryOperatorInput>,
 };
 
 export type MdxFrontmatterSections = {
@@ -3134,13 +3138,16 @@ export type IndexPageQueryVariables = {};
 
 export type IndexPageQuery = { mdx: Maybe<(
     Pick<Mdx, 'body'>
-    & { frontmatter: Maybe<{ sections: Maybe<Array<Maybe<(
+    & { frontmatter: Maybe<(
+      Pick<MdxFrontmatter, 'title' | 'description' | 'keywords'>
+      & { sections: Maybe<Array<Maybe<(
         Pick<MdxFrontmatterSections, 'title' | 'type' | 'content'>
         & { images: Maybe<Array<Maybe<(
           Pick<MdxFrontmatterSectionsImages, 'imgUrl' | 'linkUrl' | 'name' | 'role' | 'title'>
           & { socials: Maybe<Array<Maybe<Pick<MdxFrontmatterSectionsImagesSocials, 'source' | 'sourceUrl'>>>> }
         )>>> }
-      )>>> }> }
+      )>>> }
+    )> }
   )> };
 
 export type Unnamed_3_QueryVariables = {};

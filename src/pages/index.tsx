@@ -23,10 +23,10 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       {locationContext => (
         <Layout>
           <Seo
-            title="Home"
-            keywords="blog pagination searcher gatsby javascript react"
+            title={pageContent.frontmatter.title}
+            keywords={pageContent.frontmatter.keywords}
             location={locationContext.location.pathname}
-            description="description"
+            description={pageContent.frontmatter.description}
           />
           {pageContent.frontmatter.sections.map(section => {
             switch (section.type) {
@@ -78,6 +78,9 @@ export const pageQuery = graphql`
     mdx(fields: { slug: { eq: "/homePage/" } }) {
       body
       frontmatter {
+        title
+        description
+        keywords
         sections {
           title
           type

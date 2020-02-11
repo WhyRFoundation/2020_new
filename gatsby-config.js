@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby minimal boilerplate`,
-    author: `Emil Buszyło`,
-    description: `Gatsby minimal boilerplate project`,
+    title: `Why R? 2020 Conference`,
+    author: `Emil Buszyło, Marcin Kosinski and Michał Burdukiewicz`,
+    description: `Why R? 2020: an international conference about R applications, ranging from pure science to business`,
     siteUrl: 'https://test.io',
-    logo: `content/assets/gatsby-icon.png`,
-    fbPageId: `YOUR_FB_PAGE_ID`,
+    logo: `content/assets/whyr-logo.png`,
+    fbPageId: `378708019146780`,
     dateModified: new Date(),
     footer: [
       {
@@ -115,14 +115,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Why R? 2020 Conference`,
+        short_name: `Why R?`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#929fab`,
+        theme_color: `#d7aa8d`,
         display: `minimal-ui`,
-        // edit below
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/whyr-logo.png`,
       },
     },
     {
