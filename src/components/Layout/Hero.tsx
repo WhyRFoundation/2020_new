@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import heroImg from '../../../content/assets/bg.jpg'
+import heroImgBigDesktop from '../../../content/assets/bg-desktop.jpg'
+import heroImgSmallDesktop from '../../../content/assets/bg-desktop-small.jpg'
 
 interface HeroProps {
   title?: string
@@ -10,7 +11,10 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
   return (
-    <Wrapper heroImg={heroImg}>
+    <Wrapper
+      heroImgBigDesktop={heroImgBigDesktop}
+      heroImgSmallDesktop={heroImgSmallDesktop}
+    >
       <Content>
         {title && <Title>{title}</Title>}
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
@@ -19,7 +23,12 @@ export const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
   )
 }
 
-const Wrapper = styled.div<{ heroImg: string }>`
+interface HeroWrapper {
+  heroImgBigDesktop: string
+  heroImgSmallDesktop: string
+}
+
+const Wrapper = styled.div<HeroWrapper>`
   position: relative;
   width: 100%;
   height: 100vh;
@@ -35,10 +44,14 @@ const Wrapper = styled.div<{ heroImg: string }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(${heroImg});
+    background-image: url(${heroImgSmallDesktop});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+
+    @media screen and (min-width: 1680px) {
+      background-image: url(${heroImgBigDesktop});
+    }
   }
 `
 
