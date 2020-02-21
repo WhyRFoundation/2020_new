@@ -56,6 +56,14 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
         <LinkWrapper>
           <MobileStyledLink
             isLink={false}
+            onClick={() => scrollToHandler('sponsors')}
+          >
+            Sponsors
+          </MobileStyledLink>
+        </LinkWrapper>
+        <LinkWrapper>
+          <MobileStyledLink
+            isLink={false}
             onClick={() => scrollToHandler('ORGANIZERS')}
           >
             ORGANIZERS

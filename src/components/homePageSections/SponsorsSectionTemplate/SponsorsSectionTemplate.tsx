@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { SectionTitle } from '../../UI/SectionTitle'
-import { SectionSubtitle } from '../../UI/SectionSubtitle'
 import { SectionWrapper } from '../../UI/SectionWrapper'
 
 interface SponsorsSectionTemplateProps {
@@ -35,7 +34,6 @@ export const SponsorsSectionTemplate: React.FC<SponsorsSectionTemplateProps> = (
   section,
 }) => {
   const { title, sponsors } = section
-  console.log(sponsors)
   return (
     <SectionWrapper id={title}>
       <SectionTitle>{title}</SectionTitle>
