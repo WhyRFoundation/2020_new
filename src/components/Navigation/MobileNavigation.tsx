@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useCallback } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
 
 import { scrollToHandler } from '../Utils/scrollUtils'
@@ -7,50 +7,16 @@ import { NavigationLink } from './NavigationLink'
 import whyrLogo from '../../../content/assets/whyrnieb-white.png'
 
 interface MobileNavigationProps {
-  scrollHeight: number
   toggleHandler: () => void
   isOpen: boolean
 }
 
 export const MobileNavigation: React.FC<MobileNavigationProps> = ({
-  scrollHeight,
   toggleHandler,
   isOpen,
 }) => {
-  const [fillNav, setFillNav] = useState<boolean>(false)
-  const [animationFrameStatus, setAnimationFrameStatus] = useState<boolean>(
-    false
-  )
-
-  const changeScrollBarHandler = useCallback(() => {
-    if (animationFrameStatus) {
-      setAnimationFrameStatus(false)
-    }
-
-    if (window.pageYOffset > scrollHeight - 180 && !fillNav) {
-      setFillNav(true)
-    } else {
-      setFillNav(false)
-    }
-  }, [fillNav, scrollHeight, window.pageYOffset, animationFrameStatus])
-
-  const handleScroll = useCallback(() => {
-    if (!animationFrameStatus) {
-      window.requestAnimationFrame(changeScrollBarHandler)
-      setAnimationFrameStatus(true)
-    }
-  }, [animationFrameStatus])
-
-  useLayoutEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
   return (
-    <Wrapper fillNav={fillNav} isOpen={isOpen}>
+    <Wrapper isOpen={isOpen}>
       <NavigationBar>
         <NavigationLink path="/">
           <LogoLink src={whyrLogo} />
@@ -117,7 +83,6 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
 }
 
 interface NavigationWrapperProps {
-  fillNav: boolean
   isOpen: boolean
 }
 

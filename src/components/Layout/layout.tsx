@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import {
   createHistory,
@@ -50,7 +50,6 @@ const source = createMemorySource('/')
 const history = createHistory(source)
 
 export const Layout: React.FC<{}> = ({ children }) => {
-  const [heroHeight, setHeroHeight] = useState<number>(0)
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const heroRef = useRef<HTMLDivElement>(null)
@@ -59,41 +58,29 @@ export const Layout: React.FC<{}> = ({ children }) => {
     setIsOpen(!isOpen)
   }
 
-  useLayoutEffect(() => {
-    if (heroRef && heroRef.current) {
-      setHeroHeight(heroRef.current.clientHeight)
-    }
-    return () => {
-      setHeroHeight(0)
-    }
-  }, [heroRef, heroRef.current, heroHeight])
-
   return (
     <LocationProvider history={history}>
       <ThemeProvider theme={theme}>
         <GlobalStyle theme="" />
 
         <Wrapper>
-          {heroHeight && (
-            <>
-              <MediaQueryWrapper
-                defaultStyles="display: none;"
-                mediaStyles="display: block;"
-              >
-                <Navigation scrollHeight={heroHeight} />
-              </MediaQueryWrapper>
-              <MediaQueryWrapper
-                defaultStyles="display: block;"
-                mediaStyles="display: none;"
-              >
-                <MobileNavigation
-                  scrollHeight={heroHeight}
-                  toggleHandler={NavToggleHandler}
-                  isOpen={isOpen}
-                />
-              </MediaQueryWrapper>
-            </>
-          )}
+          <>
+            <MediaQueryWrapper
+              defaultStyles="display: none;"
+              mediaStyles="display: block;"
+            >
+              <Navigation />
+            </MediaQueryWrapper>
+            <MediaQueryWrapper
+              defaultStyles="display: block;"
+              mediaStyles="display: none;"
+            >
+              <MobileNavigation
+                toggleHandler={NavToggleHandler}
+                isOpen={isOpen}
+              />
+            </MediaQueryWrapper>
+          </>
           <span ref={heroRef}>
             <Hero />
           </span>

@@ -5,11 +5,7 @@ import { scrollToHandler } from '../Utils/scrollUtils'
 import { NavigationLink } from './NavigationLink'
 import whyrLogo from '../../../content/assets/whyrnieb-white.png'
 
-interface NavigationProps {
-  scrollHeight: number
-}
-
-export const Navigation: React.FC<NavigationProps> = ({ scrollHeight }) => {
+export const Navigation: React.FC<{}> = () => {
   const [fillNav, setFillNav] = useState<boolean>(false)
   const [animationFrameStatus, setAnimationFrameStatus] = useState<boolean>(
     false
@@ -20,12 +16,12 @@ export const Navigation: React.FC<NavigationProps> = ({ scrollHeight }) => {
       setAnimationFrameStatus(false)
     }
 
-    if (window.pageYOffset > scrollHeight - 180 && !fillNav) {
+    if (window && window.pageYOffset > 400 && !fillNav) {
       setFillNav(true)
     } else {
       setFillNav(false)
     }
-  }, [fillNav, scrollHeight, window.pageYOffset, animationFrameStatus])
+  }, [fillNav, animationFrameStatus])
 
   const handleScroll = useCallback(() => {
     if (!animationFrameStatus) {
