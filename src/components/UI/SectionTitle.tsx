@@ -10,6 +10,7 @@ const Title = styled.h3`
   font-weight: 700;
   font-size: 2em;
   color: ${props => props.theme.primaryHeaderColor};
+  text-transform: uppercase;
 
   &:after {
     content: '';
