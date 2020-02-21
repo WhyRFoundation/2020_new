@@ -14,11 +14,10 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   path,
   children,
   className,
-  isLink = true,
   isExternal = false,
   onClick,
 }) => {
-  if (isLink && !isExternal) {
+  if (!onClick && !isExternal) {
     return (
       <StyledLink to={path} className={className}>
         {children}
@@ -26,7 +25,7 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
     )
   }
 
-  if (isLink && isExternal) {
+  if (!onClick && isExternal) {
     return (
       <StyledLink href={path} as="a" className={className}>
         {children}

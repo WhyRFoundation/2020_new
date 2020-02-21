@@ -47,42 +47,29 @@ export const Navigation: React.FC<{}> = () => {
       </StyledNav>
       <StyledNav>
         <LinkWrapper>
-          <NavigationLink
-            isLink={false}
-            onClick={() => scrollToHandler('About')}
-          >
+          <NavigationLink onClick={() => scrollToHandler('About')}>
             About
           </NavigationLink>
         </LinkWrapper>
         <LinkWrapper>
-          <NavigationLink
-            isLink={false}
-            onClick={() => scrollToHandler('2020 KEYNOTES')}
-          >
+          <NavigationLink onClick={() => scrollToHandler('2020 KEYNOTES')}>
             Speakers
           </NavigationLink>
         </LinkWrapper>
         <LinkWrapper>
           <NavigationLink
-            isLink={false}
             onClick={() => scrollToHandler('WHY R? 2020 PRE-MEETINGS')}
           >
             PRE-MEETINGS
           </NavigationLink>
         </LinkWrapper>
         <LinkWrapper>
-          <NavigationLink
-            isLink={false}
-            onClick={() => scrollToHandler('sponsors')}
-          >
+          <NavigationLink onClick={() => scrollToHandler('sponsors')}>
             Sponsors
           </NavigationLink>
         </LinkWrapper>
         <LinkWrapper>
-          <NavigationLink
-            isLink={false}
-            onClick={() => scrollToHandler('ORGANIZERS')}
-          >
+          <NavigationLink onClick={() => scrollToHandler('ORGANIZERS')}>
             ORGANIZERS
           </NavigationLink>
         </LinkWrapper>

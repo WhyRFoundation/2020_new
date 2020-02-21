@@ -30,48 +30,35 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
           </MobileStyledLink>
         </LinkWrapper>
         <LinkWrapper>
-          <MobileStyledLink
-            isLink={false}
-            onClick={() => scrollToHandler('About')}
-          >
+          <MobileStyledLink onClick={() => scrollToHandler('About')}>
             About
           </MobileStyledLink>
         </LinkWrapper>
         <LinkWrapper>
-          <MobileStyledLink
-            isLink={false}
-            onClick={() => scrollToHandler('2020 KEYNOTES')}
-          >
+          <MobileStyledLink onClick={() => scrollToHandler('2020 KEYNOTES')}>
             Speakers
           </MobileStyledLink>
         </LinkWrapper>
         <LinkWrapper>
           <MobileStyledLink
-            isLink={false}
             onClick={() => scrollToHandler('WHY R? 2020 PRE-MEETINGS')}
           >
             PRE-MEETINGS
           </MobileStyledLink>
         </LinkWrapper>
         <LinkWrapper>
-          <MobileStyledLink
-            isLink={false}
-            onClick={() => scrollToHandler('sponsors')}
-          >
+          <MobileStyledLink onClick={() => scrollToHandler('sponsors')}>
             Sponsors
           </MobileStyledLink>
         </LinkWrapper>
         <LinkWrapper>
-          <MobileStyledLink
-            isLink={false}
-            onClick={() => scrollToHandler('ORGANIZERS')}
-          >
+          <MobileStyledLink onClick={() => scrollToHandler('ORGANIZERS')}>
             ORGANIZERS
           </MobileStyledLink>
         </LinkWrapper>
         {/* <LinkWrapper>
           <MobileStyledLink
-            isLink={false}
+            
             onClick={() => scrollToHandler('contactForm')}
           >
             BUY TICKET BUTTON
@@ -79,7 +66,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
         </LinkWrapper>
         <LinkWrapper>
           <MobileStyledLink
-            isLink={false}
+            
             onClick={() => scrollToHandler('contactForm')}
           >
             SOCIAL MEDIA SECTION
