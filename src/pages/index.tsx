@@ -10,6 +10,7 @@ import { PartnersSectionTemplate } from '../components/homePageSections/Partners
 import { PeopleSectionTemplate } from '../components/homePageSections/PeopleSectionTemplate'
 import { TilesGalleryTemplate } from '../components/homePageSections/TilesGalleryTemplate'
 import { SpeakersSectionTemplate } from '../components/homePageSections/SpeakersSectionTemplate'
+import { SponsorsSectionTemplate } from '../components/homePageSections/SponsorsSectionTemplate'
 
 interface IndexPageProps {
   data: IndexPageQuery
@@ -24,7 +25,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         <Layout>
           <Seo
             title={pageContent.frontmatter.title}
-            keywords={pageContent.frontmatter.keywords}
+            // keywords={pageContent.frontmatter.keywords}
             location={locationContext.location.pathname}
             description={pageContent.frontmatter.description}
           />
@@ -55,6 +56,13 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
               case 'speakers':
                 return (
                   <SpeakersSectionTemplate
+                    key={section.title}
+                    section={section}
+                  />
+                )
+              case 'sponsors':
+                return (
+                  <SponsorsSectionTemplate
                     key={section.title}
                     section={section}
                   />
@@ -94,6 +102,14 @@ export const pageQuery = graphql`
             socials {
               source
               sourceUrl
+            }
+          }
+          sponsors {
+            rank
+            images {
+              imgUrl
+              linkUrl
+              title
             }
           }
         }
