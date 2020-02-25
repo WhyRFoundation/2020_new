@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import { scrollToHandler } from '../Utils/scrollUtils'
 import { NavigationIcon } from './NavigationIcon'
 import { NavigationLink } from './NavigationLink'
+
 import whyrLogo from '../../../content/assets/whyrnieb-white.png'
 
 interface MobileNavigationProps {
@@ -56,22 +57,6 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
             ORGANIZERS
           </MobileStyledLink>
         </LinkWrapper>
-        {/* <LinkWrapper>
-          <MobileStyledLink
-            
-            onClick={() => scrollToHandler('contactForm')}
-          >
-            BUY TICKET BUTTON
-          </MobileStyledLink>
-        </LinkWrapper>
-        <LinkWrapper>
-          <MobileStyledLink
-            
-            onClick={() => scrollToHandler('contactForm')}
-          >
-            SOCIAL MEDIA SECTION
-          </MobileStyledLink>
-        </LinkWrapper> */}
       </LeftSideMenu>
     </Wrapper>
   )

@@ -42,16 +42,14 @@ export const Navigation: React.FC<{}> = () => {
   return (
     <Wrapper fillNav={fillNav}>
       <StyledNav>
-        <CtaNavButton>
+        <CtaNavButton href="/" target="_blank">
           <CtaNavButtonText>Tickets</CtaNavButtonText>
           <StyledTicketIcon />
         </CtaNavButton>
-        <CtaNavButton>
+        <CtaNavButton href="/" target="_blank">
           <CtaNavButtonText>Submit</CtaNavButtonText>
-
           <StyledSpeakerIcon />
         </CtaNavButton>
-        {/* <CtaNavButton>Submit</CtaNavButton> */}
       </StyledNav>
       <StyledNav>
         <LinkWrapper>
@@ -161,6 +159,14 @@ const CtaNavButton = styled.a`
   :first-of-type {
     border-right: none;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 0.75em;
+  }
+
+  @media (max-width: 881px) {
+    display: none;
+  }
 `
 
 const CtaNavButtonText = styled.span`
@@ -172,6 +178,10 @@ const StyledTicketIcon = styled(TiTicket)`
   position: absolute;
   transform: translate(-40px, 0px);
   z-index: 0;
+
+  @media (max-width: 1024px) {
+    transform: translate(-20px, 0px);
+  }
 `
 
 const StyledSpeakerIcon = styled(MdSpeakerNotes)`
@@ -179,4 +189,7 @@ const StyledSpeakerIcon = styled(MdSpeakerNotes)`
   position: absolute;
   transform: translate(-40px, 0px) rotate(-45deg);
   z-index: 0;
+  @media (max-width: 1024px) {
+    transform: translate(-20px, 0px) rotate(-45deg);
+  }
 `

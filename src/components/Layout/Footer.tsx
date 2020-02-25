@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
+import { MediaQueryWrapper } from '../UI/MediaQueryWrapper'
+import { FooterNavigation } from '../Navigation/FooterNavigation'
 
 export const Footer: React.FC<any> = () => {
   const { site } = useStaticQuery(
@@ -22,35 +24,44 @@ export const Footer: React.FC<any> = () => {
   const { footer } = site.siteMetadata
 
   return (
-    <Wrapper>
-      <ContentWrapper>
-        <CreatorsWrapper>
-          © {new Date().getFullYear()} |{' '}
-          {footer.map((element, index) => (
-            <span key={element.role}>
-              {element.role}:{' '}
-              {element.people.map((person, personIndex) => {
-                if (element.links[personIndex])
-                  return (
-                    <PersonLink href={element.links[personIndex]}>
-                      {person}
-                      {personIndex + 1 < element.links.length && ' & '}
-                    </PersonLink>
-                  )
-                else
-                  return (
-                    <span>
-                      {person}
-                      {personIndex + 1 < element.links.length && ' & '}
-                    </span>
-                  )
-              })}
-              {index + 1 < footer.length && ', '}
-            </span>
-          ))}
-        </CreatorsWrapper>
-      </ContentWrapper>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <ContentWrapper>
+          <CreatorsWrapper>
+            © {new Date().getFullYear()} |{' '}
+            {footer.map((element, index) => (
+              <span key={element.role}>
+                {element.role}:{' '}
+                {element.people.map((person, personIndex) => {
+                  if (element.links[personIndex])
+                    return (
+                      <PersonLink href={element.links[personIndex]}>
+                        {person}
+                        {personIndex + 1 < element.links.length && ' & '}
+                      </PersonLink>
+                    )
+                  else
+                    return (
+                      <span>
+                        {person}
+                        {personIndex + 1 < element.links.length && ' & '}
+                      </span>
+                    )
+                })}
+                {index + 1 < footer.length && ', '}
+              </span>
+            ))}
+          </CreatorsWrapper>
+        </ContentWrapper>
+      </Wrapper>
+      <MediaQueryWrapper
+        defaultStyles="display: block;"
+        mediaStyles="display: none;"
+        breakpoint="881"
+      >
+        <FooterNavigation />
+      </MediaQueryWrapper>
+    </>
   )
 }
 
@@ -59,6 +70,11 @@ const Wrapper = styled.footer`
   margin: 1.5em;
   font-size: 0.9em;
   color: ${props => props.theme.secondaryColor};
+  margin-bottom: 12em;
+
+  @media screen and (min-width: 767px) {
+    margin-bottom: 0;
+  }
 `
 
 const ContentWrapper = styled.div`
