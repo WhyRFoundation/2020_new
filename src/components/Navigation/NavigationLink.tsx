@@ -8,6 +8,7 @@ interface NavigationLinkProps {
   isLink?: boolean
   isExternal?: boolean
   onClick?: (any) => void
+  target?: '_blank' | '_self'
 }
 
 export const NavigationLink: React.FC<NavigationLinkProps> = ({
@@ -16,10 +17,11 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   className,
   isExternal = false,
   onClick,
+  target,
 }) => {
   if (!onClick && !isExternal) {
     return (
-      <StyledLink to={path} className={className}>
+      <StyledLink to={path} className={className} target={target}>
         {children}
       </StyledLink>
     )
@@ -27,7 +29,7 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
 
   if (!onClick && isExternal) {
     return (
-      <StyledLink href={path} as="a" className={className}>
+      <StyledLink href={path} as="a" className={className} target={target}>
         {children}
       </StyledLink>
     )

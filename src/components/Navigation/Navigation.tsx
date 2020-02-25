@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components'
 
 import { scrollToHandler } from '../Utils/scrollUtils'
 import { NavigationLink } from './NavigationLink'
-import whyrLogo from '../../../content/assets/whyrnieb-white.png'
+import { TiTicket } from 'react-icons/ti'
+import { MdSpeakerNotes } from 'react-icons/md'
 
 export const Navigation: React.FC<{}> = () => {
   const [fillNav, setFillNav] = useState<boolean>(false)
@@ -41,9 +42,16 @@ export const Navigation: React.FC<{}> = () => {
   return (
     <Wrapper fillNav={fillNav}>
       <StyledNav>
-        <NavigationLink path="/http://whyr.pl/foundation/#blog">
-          <LogoLink src={whyrLogo} alt="whyR? logo" />
-        </NavigationLink>
+        <CtaNavButton>
+          <CtaNavButtonText>Tickets</CtaNavButtonText>
+          <StyledTicketIcon />
+        </CtaNavButton>
+        <CtaNavButton>
+          <CtaNavButtonText>Submit</CtaNavButtonText>
+
+          <StyledSpeakerIcon />
+        </CtaNavButton>
+        {/* <CtaNavButton>Submit</CtaNavButton> */}
       </StyledNav>
       <StyledNav>
         <LinkWrapper>
@@ -73,6 +81,15 @@ export const Navigation: React.FC<{}> = () => {
             ORGANIZERS
           </NavigationLink>
         </LinkWrapper>
+        <LinkWrapper>
+          <NavigationLink
+            path="http://whyr.pl/foundation/#blog"
+            target="_blank"
+            isExternal={true}
+          >
+            BLOG
+          </NavigationLink>
+        </LinkWrapper>
       </StyledNav>
     </Wrapper>
   )
@@ -91,8 +108,7 @@ const Wrapper = styled.div<NavigationWrapperProps>`
   justify-content: space-between;
   align-items: center;
   z-index: 99;
-  border-bottom: 1px solid transparent;
-  padding: 0 2em;
+  padding: 0 2em 0 0;
   ${({ fillNav }) =>
     fillNav &&
     css`
@@ -107,15 +123,60 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  height: 100%;
 `
 const LinkWrapper = styled.li`
   padding-left: 1.5em;
   display: inline-block;
 `
 
-const LogoLink = styled.img`
-  max-width: 3.3em;
-  width: 100%;
+const CtaNavButton = styled.a`
+  color: ${props => props.theme.secondaryTextColor};
   height: 100%;
-  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 9em;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    145deg,
+    ${props => props.theme.primaryColor},
+    ${props => props.theme.secondaryColor}
+  );
+  background-position: 100%;
+
+  text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333,
+    1px 1px 0 #333;
+  font-weight: 700;
+  border: 2px solid ${props => props.theme.primaryColor};
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  background-position: 90%;
+  background-size: 200%;
+  &:hover {
+    background-position: 0;
+  }
+
+  :first-of-type {
+    border-right: none;
+  }
+`
+
+const CtaNavButtonText = styled.span`
+  z-index: 1;
+`
+
+const StyledTicketIcon = styled(TiTicket)`
+  font-size: 3.3em;
+  position: absolute;
+  transform: translate(-40px, 0px);
+  z-index: 0;
+`
+
+const StyledSpeakerIcon = styled(MdSpeakerNotes)`
+  font-size: 3em;
+  position: absolute;
+  transform: translate(-40px, 0px) rotate(-45deg);
+  z-index: 0;
 `
