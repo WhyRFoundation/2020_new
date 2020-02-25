@@ -57,7 +57,7 @@ export const Footer: React.FC<any> = () => {
       <MediaQueryWrapper
         defaultStyles="display: block;"
         mediaStyles="display: none;"
-        breakpoint="881"
+        breakpoint="881px"
       >
         <FooterNavigation />
       </MediaQueryWrapper>
