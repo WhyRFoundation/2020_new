@@ -72,6 +72,10 @@ export const Seo: React.FC<SeoProps> = ({
       link={[{ rel: `canonical`, href: metaCanonical }]}
       meta={[
         {
+          httpEquiv: 'refresh',
+          content: '0; URL=http://whyr.pl/2020_new/',
+        },
+        {
           name: `description`,
           content: metaDescription,
         },
