@@ -42,11 +42,11 @@ export const Navigation: React.FC<{}> = () => {
   return (
     <Wrapper fillNav={fillNav}>
       <StyledNav>
-        <CtaNavButton href="/" target="_blank">
+        <CtaNavButton href="https://whyr.pl/2020/register" target="_blank">
           <CtaNavButtonText>Tickets</CtaNavButtonText>
           <StyledTicketIcon />
         </CtaNavButton>
-        <CtaNavButton href="/" target="_blank">
+        <CtaNavButton href="https://whyr.pl/2020/submit" target="_blank">
           <CtaNavButtonText>Submit</CtaNavButtonText>
           <StyledSpeakerIcon />
         </CtaNavButton>
