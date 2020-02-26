@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "http://whyr.pl/2020/"
+  to = "https://whyr2020.netlify.com/"
+  status = 200
+  force = true
