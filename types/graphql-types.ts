@@ -703,6 +703,8 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___sections___content' |
   'childMdx___frontmatter___sections___images' |
   'childMdx___frontmatter___sections___sponsors' |
+  'childMdx___frontmatter___contentType' |
+  'childMdx___frontmatter___redirect' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1455,6 +1457,8 @@ export type MdxFieldsEnum =
   'frontmatter___sections___sponsors' |
   'frontmatter___sections___sponsors___rank' |
   'frontmatter___sections___sponsors___images' |
+  'frontmatter___contentType' |
+  'frontmatter___redirect' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1586,6 +1590,8 @@ export type MdxFrontmatter = {
   description?: Maybe<Scalars['String']>,
   keywords?: Maybe<Scalars['String']>,
   sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
+  contentType?: Maybe<Scalars['String']>,
+  redirect?: Maybe<Scalars['String']>,
 };
 
 
@@ -1604,6 +1610,8 @@ export type MdxFrontmatterFilterInput = {
   description?: Maybe<StringQueryOperatorInput>,
   keywords?: Maybe<StringQueryOperatorInput>,
   sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
+  contentType?: Maybe<StringQueryOperatorInput>,
+  redirect?: Maybe<StringQueryOperatorInput>,
 };
 
 export type MdxFrontmatterSections = {
@@ -1975,8 +1983,6 @@ export type QuerySiteArgs = {
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
-  port?: Maybe<IntQueryOperatorInput>,
-  host?: Maybe<StringQueryOperatorInput>,
   polyfill?: Maybe<BooleanQueryOperatorInput>,
   pathPrefix?: Maybe<StringQueryOperatorInput>,
   buildTime?: Maybe<DateQueryOperatorInput>
@@ -2046,8 +2052,6 @@ export type Site = Node & {
   children: Array<Node>,
   internal: Internal,
   siteMetadata?: Maybe<SiteSiteMetadata>,
-  port?: Maybe<Scalars['Int']>,
-  host?: Maybe<Scalars['String']>,
   polyfill?: Maybe<Scalars['Boolean']>,
   pathPrefix?: Maybe<Scalars['String']>,
   buildTime?: Maybe<Scalars['Date']>,
@@ -2186,8 +2190,6 @@ export type SiteFieldsEnum =
   'siteMetadata___footer___role' |
   'siteMetadata___footer___people' |
   'siteMetadata___footer___links' |
-  'port' |
-  'host' |
   'polyfill' |
   'pathPrefix' |
   'buildTime';
@@ -2198,8 +2200,6 @@ export type SiteFilterInput = {
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
-  port?: Maybe<IntQueryOperatorInput>,
-  host?: Maybe<StringQueryOperatorInput>,
   polyfill?: Maybe<BooleanQueryOperatorInput>,
   pathPrefix?: Maybe<StringQueryOperatorInput>,
   buildTime?: Maybe<DateQueryOperatorInput>,
@@ -3203,6 +3203,13 @@ export type BlogPostBySlugQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteS
     Pick<Mdx, 'id' | 'excerpt' | 'body'>
     & { frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'date' | 'description'>> }
   )> };
+
+export type PageBySlugQueryVariables = {
+  slug: Scalars['String']
+};
+
+
+export type PageBySlugQuery = { mdx: Maybe<{ frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'description' | 'redirect'>> }> };
 
 export type Unnamed_4_QueryVariables = {};
 
