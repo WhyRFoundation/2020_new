@@ -28,6 +28,7 @@ const COLOR_MAP = {
   gold: '#cea128',
   silver: 'silver',
   bronze: '#654321',
+  organizations: '#fff',
 }
 
 export const SponsorsSectionTemplate: React.FC<SponsorsSectionTemplateProps> = ({
@@ -69,7 +70,7 @@ const ImagesWrapper = styled.div<{ rank: string }>`
   border: 0.3em solid;
   border-radius: 0.1em;
   border-color: ${props =>
-    COLOR_MAP[props.rank] ? COLOR_MAP[props.rank] : '#eee'};
+    COLOR_MAP[props.rank] ? COLOR_MAP[props.rank] : '#fff'};
 `
 
 const StyledLink = styled.a`

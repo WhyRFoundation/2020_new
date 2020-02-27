@@ -696,15 +696,15 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___pagePrefixPath' |
   'childMdx___frontmatter___date' |
   'childMdx___frontmatter___description' |
+  'childMdx___frontmatter___contentType' |
   'childMdx___frontmatter___keywords' |
+  'childMdx___frontmatter___redirect' |
   'childMdx___frontmatter___sections' |
   'childMdx___frontmatter___sections___type' |
   'childMdx___frontmatter___sections___title' |
   'childMdx___frontmatter___sections___content' |
   'childMdx___frontmatter___sections___images' |
   'childMdx___frontmatter___sections___sponsors' |
-  'childMdx___frontmatter___contentType' |
-  'childMdx___frontmatter___redirect' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1442,7 +1442,9 @@ export type MdxFieldsEnum =
   'frontmatter___pagePrefixPath' |
   'frontmatter___date' |
   'frontmatter___description' |
+  'frontmatter___contentType' |
   'frontmatter___keywords' |
+  'frontmatter___redirect' |
   'frontmatter___sections' |
   'frontmatter___sections___type' |
   'frontmatter___sections___title' |
@@ -1457,8 +1459,6 @@ export type MdxFieldsEnum =
   'frontmatter___sections___sponsors' |
   'frontmatter___sections___sponsors___rank' |
   'frontmatter___sections___sponsors___images' |
-  'frontmatter___contentType' |
-  'frontmatter___redirect' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1588,10 +1588,10 @@ export type MdxFrontmatter = {
   pagePrefixPath?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
   description?: Maybe<Scalars['String']>,
-  keywords?: Maybe<Scalars['String']>,
-  sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
   contentType?: Maybe<Scalars['String']>,
+  keywords?: Maybe<Scalars['String']>,
   redirect?: Maybe<Scalars['String']>,
+  sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
 };
 
 
@@ -1608,10 +1608,10 @@ export type MdxFrontmatterFilterInput = {
   pagePrefixPath?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
   description?: Maybe<StringQueryOperatorInput>,
-  keywords?: Maybe<StringQueryOperatorInput>,
-  sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
   contentType?: Maybe<StringQueryOperatorInput>,
+  keywords?: Maybe<StringQueryOperatorInput>,
   redirect?: Maybe<StringQueryOperatorInput>,
+  sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
 };
 
 export type MdxFrontmatterSections = {
