@@ -4,14 +4,25 @@ import styled from 'styled-components'
 import heroImgBig from '../../../content/assets/whyr-big-bg.jpeg'
 import LogoImg from '../../../content/assets/whyr_logo2020.png'
 
-interface HeroProps {
+export interface HeroProps {
   title?: string
   subtitle?: string
+  bgImages?: BgImages
 }
 
-export const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
+interface BgImages {
+  big?: string
+  medium?: string
+  small?: string
+}
+
+export const Hero: React.FC<HeroProps> = ({ title, subtitle, bgImages }) => {
+  const bigImg = (bgImages && bgImages.big) || heroImgBig
+  const mediumImg = (bgImages && bgImages.medium) || heroImgBig
+  const smallImg = (bgImages && bgImages.small) || heroImgBig
+
   return (
-    <Wrapper heroImgBigDesktop={heroImgBig} heroImgSmallDesktop={heroImgBig}>
+    <Wrapper big={bigImg} medium={mediumImg} small={smallImg}>
       <Content>
         <Logo src={LogoImg} alt="whyrConf logo" />
         <TextBar>
@@ -24,12 +35,7 @@ export const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
   )
 }
 
-interface HeroWrapper {
-  heroImgBigDesktop: string
-  heroImgSmallDesktop: string
-}
-
-const Wrapper = styled.div<HeroWrapper>`
+const Wrapper = styled.div<BgImages>`
   position: relative;
   width: 100%;
   height: 100vh;
@@ -45,13 +51,17 @@ const Wrapper = styled.div<HeroWrapper>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(${heroImgBig});
+    background-image: url(${props => props.small});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 
+    @media screen and (min-width: 768px) {
+      background-image: url(${props => props.medium});
+    }
+
     @media screen and (min-width: 1680px) {
-      background-image: url(${heroImgBig});
+      background-image: url(${props => props.big});
     }
   }
 `

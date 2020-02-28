@@ -8,7 +8,7 @@ import {
 import reset from 'styled-reset-advanced'
 
 import { theme } from './theme'
-import { Hero } from './Hero'
+import { Hero, HeroProps } from './Hero'
 import { Navigation, MobileNavigation } from '../Navigation'
 import { MediaQueryWrapper } from '../UI/MediaQueryWrapper'
 import { Footer } from './Footer'
@@ -49,7 +49,14 @@ const GlobalStyle = createGlobalStyle`
 const source = createMemorySource('/')
 const history = createHistory(source)
 
-export const Layout: React.FC<{}> = ({ children }) => {
+interface LayoutInterface extends HeroProps {}
+
+export const Layout: React.FC<LayoutInterface> = ({
+  bgImages,
+  title,
+  subtitle,
+  children,
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const heroRef = useRef<HTMLDivElement>(null)
@@ -57,6 +64,9 @@ export const Layout: React.FC<{}> = ({ children }) => {
   const NavToggleHandler = () => {
     setIsOpen(!isOpen)
   }
+
+  const titleText = title || 'Why R? 2020 Conference'
+  const subtitleText = subtitle || 'Warsaw, 27-30.08'
 
   return (
     <LocationProvider history={history}>
@@ -82,7 +92,11 @@ export const Layout: React.FC<{}> = ({ children }) => {
             </MediaQueryWrapper>
           </>
           <span ref={heroRef}>
-            <Hero title="Why R? 2020 Conference" subtitle="Warsaw, 27-30.08" />
+            <Hero
+              title={titleText}
+              subtitle={subtitleText}
+              bgImages={bgImages}
+            />
           </span>
           <PageContent>{children}</PageContent>
           <Footer />
