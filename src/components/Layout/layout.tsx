@@ -82,7 +82,7 @@ export const Layout: React.FC<{}> = ({ children }) => {
             </MediaQueryWrapper>
           </>
           <span ref={heroRef}>
-            <Hero />
+            <Hero title="Why R? 2020 Conference" subtitle="Warsaw, 27-30.08" />
           </span>
           <PageContent>{children}</PageContent>
           <Footer />
