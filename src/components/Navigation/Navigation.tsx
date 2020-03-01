@@ -58,7 +58,7 @@ export const Navigation: React.FC<{}> = () => {
           </NavigationLink>
         </LinkWrapper>
         <LinkWrapper>
-          <NavigationLink onClick={() => scrollToHandler('DATES ADN REGISTRATION')}>
+          <NavigationLink onClick={() => scrollToHandler('DATES AND REGISTRATION')}>
             Dates
           </NavigationLink>
         </LinkWrapper>
@@ -85,7 +85,7 @@ export const Navigation: React.FC<{}> = () => {
           </NavigationLink>
         </LinkWrapper>
         <LinkWrapper>
-          <NavigationLink onClick={() => scrollToHandler('CODE OF CONDUCT')}>
+          <NavigationLink onClick={() => scrollToHandler('Code of Conduct')}>
             CONDUCT
           </NavigationLink>
         </LinkWrapper>        
