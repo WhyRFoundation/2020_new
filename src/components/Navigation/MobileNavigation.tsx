@@ -36,6 +36,11 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
           </MobileStyledLink>
         </LinkWrapper>
         <LinkWrapper>
+          <NavigationLink onClick={() => scrollToHandler('DATES ADN REGISTRATION')}>
+            Dates
+          </NavigationLink>
+        </LinkWrapper>
+        <LinkWrapper>
           <MobileStyledLink onClick={() => scrollToHandler('2020 KEYNOTES')}>
             Speakers
           </MobileStyledLink>
