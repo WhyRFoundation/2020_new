@@ -696,15 +696,15 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___pagePrefixPath' |
   'childMdx___frontmatter___date' |
   'childMdx___frontmatter___description' |
+  'childMdx___frontmatter___contentType' |
   'childMdx___frontmatter___keywords' |
+  'childMdx___frontmatter___redirect' |
   'childMdx___frontmatter___sections' |
   'childMdx___frontmatter___sections___type' |
   'childMdx___frontmatter___sections___title' |
   'childMdx___frontmatter___sections___content' |
   'childMdx___frontmatter___sections___images' |
   'childMdx___frontmatter___sections___sponsors' |
-  'childMdx___frontmatter___contentType' |
-  'childMdx___frontmatter___redirect' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1442,7 +1442,9 @@ export type MdxFieldsEnum =
   'frontmatter___pagePrefixPath' |
   'frontmatter___date' |
   'frontmatter___description' |
+  'frontmatter___contentType' |
   'frontmatter___keywords' |
+  'frontmatter___redirect' |
   'frontmatter___sections' |
   'frontmatter___sections___type' |
   'frontmatter___sections___title' |
@@ -1453,12 +1455,11 @@ export type MdxFieldsEnum =
   'frontmatter___sections___images___role' |
   'frontmatter___sections___images___title' |
   'frontmatter___sections___images___linkUrl' |
+  'frontmatter___sections___images___isLazy' |
   'frontmatter___sections___images___socials' |
   'frontmatter___sections___sponsors' |
   'frontmatter___sections___sponsors___rank' |
   'frontmatter___sections___sponsors___images' |
-  'frontmatter___contentType' |
-  'frontmatter___redirect' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1588,10 +1589,10 @@ export type MdxFrontmatter = {
   pagePrefixPath?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
   description?: Maybe<Scalars['String']>,
-  keywords?: Maybe<Scalars['String']>,
-  sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
   contentType?: Maybe<Scalars['String']>,
+  keywords?: Maybe<Scalars['String']>,
   redirect?: Maybe<Scalars['String']>,
+  sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
 };
 
 
@@ -1608,10 +1609,10 @@ export type MdxFrontmatterFilterInput = {
   pagePrefixPath?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
   description?: Maybe<StringQueryOperatorInput>,
-  keywords?: Maybe<StringQueryOperatorInput>,
-  sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
   contentType?: Maybe<StringQueryOperatorInput>,
+  keywords?: Maybe<StringQueryOperatorInput>,
   redirect?: Maybe<StringQueryOperatorInput>,
+  sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
 };
 
 export type MdxFrontmatterSections = {
@@ -1640,6 +1641,7 @@ export type MdxFrontmatterSectionsImages = {
   role?: Maybe<Scalars['String']>,
   title?: Maybe<Scalars['String']>,
   linkUrl?: Maybe<Scalars['String']>,
+  isLazy?: Maybe<Scalars['Boolean']>,
   socials?: Maybe<Array<Maybe<MdxFrontmatterSectionsImagesSocials>>>,
 };
 
@@ -1649,6 +1651,7 @@ export type MdxFrontmatterSectionsImagesFilterInput = {
   role?: Maybe<StringQueryOperatorInput>,
   title?: Maybe<StringQueryOperatorInput>,
   linkUrl?: Maybe<StringQueryOperatorInput>,
+  isLazy?: Maybe<BooleanQueryOperatorInput>,
   socials?: Maybe<MdxFrontmatterSectionsImagesSocialsFilterListInput>,
 };
 
@@ -3187,7 +3190,7 @@ export type IndexPageQuery = { mdx: Maybe<(
       & { sections: Maybe<Array<Maybe<(
         Pick<MdxFrontmatterSections, 'title' | 'type' | 'content'>
         & { images: Maybe<Array<Maybe<(
-          Pick<MdxFrontmatterSectionsImages, 'imgUrl' | 'linkUrl' | 'name' | 'role' | 'title'>
+          Pick<MdxFrontmatterSectionsImages, 'imgUrl' | 'linkUrl' | 'name' | 'role' | 'title' | 'isLazy'>
           & { socials: Maybe<Array<Maybe<Pick<MdxFrontmatterSectionsImagesSocials, 'source' | 'sourceUrl'>>>> }
         )>>>, sponsors: Maybe<Array<Maybe<(
           Pick<MdxFrontmatterSectionsSponsors, 'rank'>
@@ -3222,7 +3225,7 @@ export type PageBySlugQuery = { mdx: Maybe<{ frontmatter: Maybe<(
       & { sections: Maybe<Array<Maybe<(
         Pick<MdxFrontmatterSections, 'title' | 'type' | 'content'>
         & { images: Maybe<Array<Maybe<(
-          Pick<MdxFrontmatterSectionsImages, 'imgUrl' | 'linkUrl' | 'name' | 'role' | 'title'>
+          Pick<MdxFrontmatterSectionsImages, 'imgUrl' | 'linkUrl' | 'name' | 'role' | 'title' | 'isLazy'>
           & { socials: Maybe<Array<Maybe<Pick<MdxFrontmatterSectionsImagesSocials, 'source' | 'sourceUrl'>>>> }
         )>>>, sponsors: Maybe<Array<Maybe<(
           Pick<MdxFrontmatterSectionsSponsors, 'rank'>

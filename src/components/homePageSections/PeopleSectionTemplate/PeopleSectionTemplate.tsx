@@ -7,6 +7,7 @@ import { MdContent } from '../../MdContent'
 import { SectionTitle } from '../../UI/SectionTitle'
 import { SectionWrapper } from '../../UI/SectionWrapper'
 import { StyledImg } from '../../UI/StyledImg'
+import { LazyElement } from '../../Utils/LazyElement'
 
 interface PeopleSectionTemplateProps {
   section: SectionProps
@@ -24,6 +25,7 @@ interface Images {
   name: string
   role: string
   socials: Socials[]
+  isLazy?: boolean
 }
 
 interface Socials {
@@ -61,7 +63,7 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
           images.map(image => (
             <ListItem key={image.name}>
               <Person>
-                <PersonPhotoWrapper>
+                <PersonPhotoWrapper isLazy={image.isLazy}>
                   <StyledImg
                     src={image.imgUrl}
                     alt={`${image.name} ${image.role}`}
@@ -127,7 +129,7 @@ const Person = styled.div`
     }
   }
 `
-const PersonPhotoWrapper = styled.div`
+const PersonPhotoWrapper = styled(LazyElement)`
   width: 100%;
   padding-top: 100%;
   position: relative;

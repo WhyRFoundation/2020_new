@@ -51,6 +51,7 @@ export const pageQuery = graphql`
             name
             role
             title
+            isLazy
             socials {
               source
               sourceUrl

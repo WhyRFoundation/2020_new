@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { MdContent } from '../../MdContent'
 import { SectionTitle } from '../../UI/SectionTitle'
 import { SectionWrapper } from '../../UI/SectionWrapper'
+import { LazyElement } from '../../Utils/LazyElement'
 
 interface PartnersSectionTemplateProps {
   section: SectionProps
@@ -18,6 +19,7 @@ interface Images {
   title: string
   imgUrl: string
   linkUrl: string
+  isLazy?: boolean
 }
 
 export const PartnersSectionTemplate: React.FC<PartnersSectionTemplateProps> = ({
@@ -32,9 +34,11 @@ export const PartnersSectionTemplate: React.FC<PartnersSectionTemplateProps> = (
         {images &&
           images.length > 0 &&
           images.map(image => (
-            <StyledLink href={image.linkUrl} key={image.title} target="_blank">
-              <StyledImg src={image.imgUrl} alt={image.title} />
-            </StyledLink>
+            <LazyElement isLazy={image.isLazy} key={image.title}>
+              <StyledLink href={image.linkUrl} target="_blank">
+                <StyledImg src={image.imgUrl} alt={image.title} />
+              </StyledLink>
+            </LazyElement>
           ))}
       </ImagesContainer>
     </SectionWrapper>

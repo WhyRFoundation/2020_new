@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { SectionTitle } from '../../UI/SectionTitle'
 import { SectionWrapper } from '../../UI/SectionWrapper'
+import { LazyElement } from '../../Utils/LazyElement'
 
 interface SponsorsSectionTemplateProps {
   section: SectionProps
@@ -21,6 +22,7 @@ interface Images {
   title: string
   imgUrl: string
   linkUrl: string
+  isLazy?: boolean
 }
 
 const COLOR_MAP = {
@@ -44,13 +46,11 @@ export const SponsorsSectionTemplate: React.FC<SponsorsSectionTemplateProps> = (
             <Subtitle rank={sponsor.rank}>{sponsor.rank}</Subtitle>
             <ImagesWrapper rank={sponsor.rank.toLocaleLowerCase()}>
               {sponsor.images.map(image => (
-                <StyledLink
-                  href={image.linkUrl}
-                  key={image.title}
-                  target="_blank"
-                >
-                  <StyledImg src={image.imgUrl} alt={image.title} />
-                </StyledLink>
+                <LazyElement isLazy={image.isLazy} key={image.title}>
+                  <StyledLink href={image.linkUrl} target="_blank">
+                    <StyledImg src={image.imgUrl} alt={image.title} />
+                  </StyledLink>
+                </LazyElement>
               ))}
             </ImagesWrapper>
           </div>

@@ -4,6 +4,7 @@ import { MdContent } from '../../MdContent'
 import { SectionTitle } from '../../UI/SectionTitle'
 import { SectionWrapper } from '../../UI/SectionWrapper'
 import { StyledImg } from '../../UI/StyledImg'
+import { LazyElement } from '../../Utils/LazyElement'
 
 import sectionBG from '../../../../content/assets/cloudBg.jpg'
 
@@ -21,6 +22,7 @@ interface Images {
   imgUrl: string
   name: string
   role: string
+  isLazy?: boolean
 }
 
 export const SpeakersSectionTemplate: React.FC<SpeakersSectionTemplateProps> = ({
@@ -38,7 +40,7 @@ export const SpeakersSectionTemplate: React.FC<SpeakersSectionTemplateProps> = (
             images.map(image => (
               <ListItem key={image.name}>
                 <ListItemContent>
-                  <PersonPhotoWrapper>
+                  <PersonPhotoWrapper isLazy={image.isLazy}>
                     <StyledImg
                       src={image.imgUrl}
                       alt={`${image.name} ${image.role}`}
@@ -106,7 +108,7 @@ const ListItemContent = styled.div`
   }
 `
 
-const PersonPhotoWrapper = styled.div`
+const PersonPhotoWrapper = styled(LazyElement)`
   width: 100%;
   padding-top: 100%;
   position: relative;
