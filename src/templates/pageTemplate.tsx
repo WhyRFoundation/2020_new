@@ -1,24 +1,32 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import { LocationProvider } from '@reach/router'
 
-const PageTemplate: React.FC<any> = ({ data }) => {
-  const { mdx } = data
+import { IndexPageQuery } from '../../types/graphql-types'
+import { Layout } from '../components/Layout'
+import { Seo } from '../components/Seo'
+import { PageContentCreator } from '../components/Utils/PageContentCreator'
 
+interface IndexPageProps {
+  data: IndexPageQuery
+}
+
+const PageTemplate: React.FC<IndexPageProps> = ({ data }) => {
+  const pageContent = data.mdx
   return (
-    <Helmet>
-      <meta
-        http-equiv="refresh"
-        content={`0; URL=${mdx.frontmatter.redirect}`}
-      />
-      <link
-        rel="canonical"
-        href={`${mdx.frontmatter.redirect}`}
-        data-react-helmet="true"
-      ></link>
-      <title>{mdx.frontmatter.title}</title>
-      <meta name="description" content={`${mdx.frontmatter.description}`} />
-    </Helmet>
+    <LocationProvider>
+      {locationContext => (
+        <Layout>
+          <Seo
+            title={pageContent.frontmatter.title}
+            keywords={pageContent.frontmatter.keywords}
+            location={locationContext.location.pathname}
+            description={pageContent.frontmatter.description}
+          />
+          <PageContentCreator sections={pageContent.frontmatter.sections} />
+        </Layout>
+      )}
+    </LocationProvider>
   )
 }
 
@@ -30,7 +38,31 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
-        redirect
+        keywords
+        sections {
+          title
+          type
+          content
+          images {
+            imgUrl
+            linkUrl
+            name
+            role
+            title
+            socials {
+              source
+              sourceUrl
+            }
+          }
+          sponsors {
+            rank
+            images {
+              imgUrl
+              linkUrl
+              title
+            }
+          }
+        }
       }
     }
   }
