@@ -28,7 +28,7 @@ export const TilesGalleryTemplate: React.FC<TilesGalleryProps> = ({
         mediaStyles="display: block;"
       >
         <SectionWrapper id={title}>
-          <SectionTitle>{title}</SectionTitle>
+          {title && <SectionTitle>{title}</SectionTitle>}
           <DesktopTilesGalleryTemplate images={images} />
         </SectionWrapper>
       </MediaQueryWrapper>

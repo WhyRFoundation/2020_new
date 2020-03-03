@@ -32,7 +32,7 @@ export const SpeakersSectionTemplate: React.FC<SpeakersSectionTemplateProps> = (
   return (
     <SectionBackground backgroundImg={sectionBG}>
       <SectionWrapper id={title}>
-        <SectionTitle>{title}</SectionTitle>
+        {title && <SectionTitle>{title}</SectionTitle>}
         <MdContent md={content} />
         <ImageList centerList={images && images.length <= 4}>
           {images &&

@@ -28,7 +28,7 @@ export const PartnersSectionTemplate: React.FC<PartnersSectionTemplateProps> = (
   const { title, content, images } = section
   return (
     <SectionWrapper id={title}>
-      <SectionTitle>{title}</SectionTitle>
+      {title && <SectionTitle>{title}</SectionTitle>}
       <MdContent md={content} />
       <ImagesContainer>
         {images &&

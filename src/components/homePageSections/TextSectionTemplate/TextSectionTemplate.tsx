@@ -18,7 +18,7 @@ export const TextSectionTemplate: React.FC<TextSectionTemplateProps> = ({
   const { title, content } = section
   return (
     <SectionWrapper id={title}>
-      <SectionTitle>{title}</SectionTitle>
+      {title && <SectionTitle>{title}</SectionTitle>}
       <MdContent md={content} />
     </SectionWrapper>
   )
