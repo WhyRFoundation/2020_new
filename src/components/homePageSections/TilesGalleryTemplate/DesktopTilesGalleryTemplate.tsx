@@ -14,7 +14,7 @@ export const DesktopTilesGalleryTemplate: React.FC<TilesGalleryProps> = ({
     <ImagesGrid>
       {images.map((image, index) => (
         <TileItem
-          key={image.title}
+          key={`${image.title}${index}`}
           linkUrl={image.linkUrl}
           imgUrl={image.imgUrl}
           title={image.title}

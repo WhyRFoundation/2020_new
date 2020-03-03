@@ -35,14 +35,17 @@ export const Footer: React.FC<any> = () => {
                 {element.people.map((person, personIndex) => {
                   if (element.links[personIndex])
                     return (
-                      <PersonLink href={element.links[personIndex]}>
+                      <PersonLink
+                        key={`${element.role}${personIndex}`}
+                        href={element.links[personIndex]}
+                      >
                         {person}
                         {personIndex + 1 < element.links.length && ' & '}
                       </PersonLink>
                     )
                   else
                     return (
-                      <span>
+                      <span key={`${element.role}${personIndex}`}>
                         {person}
                         {personIndex + 1 < element.links.length && ' & '}
                       </span>

@@ -21,8 +21,8 @@ export const MobileTilesGalleryTemplate: React.FC<TilesGalleryProps> = ({
       <MobileTillsWrapper>
         <MobileInsideTillsWrapper>
           <MobileTillsList>
-            {images.map(image => (
-              <MobileTillsItem>
+            {images.map((image, index) => (
+              <MobileTillsItem key={`${image.title}${index}`}>
                 <a href={image.linkUrl}>
                   {image.imgUrl ? (
                     <StyledImg src={image.imgUrl} />

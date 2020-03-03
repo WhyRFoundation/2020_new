@@ -60,8 +60,8 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
       <PeopleList centerList={images.length <= 4}>
         {images &&
           images.length > 0 &&
-          images.map(image => (
-            <ListItem key={image.name}>
+          images.map((image, index) => (
+            <ListItem key={`${image.name}${index}`}>
               <Person>
                 <PersonPhotoWrapper isLazy={image.isLazy}>
                   <StyledImg
@@ -73,8 +73,11 @@ export const PeopleSectionTemplate: React.FC<PeopleSectionTemplateProps> = ({
                 {image.role && <RoleWrapper>{image.role}</RoleWrapper>}
                 {image.socials && image.socials.length && (
                   <SocialsWrapper>
-                    {image.socials.map(social => (
-                      <SocialLink href={social.sourceUrl}>
+                    {image.socials.map((social, index) => (
+                      <SocialLink
+                        href={social.sourceUrl}
+                        key={`${social.source}${index}`}
+                      >
                         {getSocialIcon(social.source)}
                       </SocialLink>
                     ))}
