@@ -1,28 +1,58 @@
 import React from 'react'
 import styled from 'styled-components'
-
-import heroImgBig from '../../../content/assets/whyr-big-bg.jpeg'
+import Image from 'gatsby-image'
 import LogoImg from '../../../content/assets/whyr_logo2020.png'
+import { useStaticQuery, graphql } from 'gatsby'
 
 export interface HeroProps {
   title?: string
   subtitle?: string
-  bgImages?: BgImages
 }
 
-interface BgImages {
-  big?: string
-  medium?: string
-  small?: string
-}
+export const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
+  const { mobileImage, desktopImage, bigDesktopImage } = useStaticQuery(
+    graphql`
+      query {
+        mobileImage: file(relativePath: { eq: "whyr-big-bg.jpeg" }) {
+          childImageSharp {
+            fluid(maxWidth: 900, quality: 90) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        desktopImage: file(relativePath: { eq: "whyr-big-bg.jpeg" }) {
+          childImageSharp {
+            fluid(maxWidth: 1700, quality: 90) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        bigDesktopImage: file(relativePath: { eq: "whyr-big-bg.jpeg" }) {
+          childImageSharp {
+            fluid(maxWidth: 2400, quality: 95) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `
+  )
 
-export const Hero: React.FC<HeroProps> = ({ title, subtitle, bgImages }) => {
-  const bigImg = (bgImages && bgImages.big) || heroImgBig
-  const mediumImg = (bgImages && bgImages.medium) || heroImgBig
-  const smallImg = (bgImages && bgImages.small) || heroImgBig
+  const sources = [
+    mobileImage.childImageSharp.fluid,
+    {
+      ...desktopImage.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+    {
+      ...bigDesktopImage.childImageSharp.fluid,
+      media: `(min-width: 1699px)`,
+    },
+  ]
 
   return (
-    <Wrapper big={bigImg} medium={mediumImg} small={smallImg}>
+    <Wrapper>
+      <BgImage fluid={sources} />
       <Content>
         <Logo src={LogoImg} alt="whyrConf logo" />
         <TextBar>
@@ -35,7 +65,7 @@ export const Hero: React.FC<HeroProps> = ({ title, subtitle, bgImages }) => {
   )
 }
 
-const Wrapper = styled.div<BgImages>`
+const Wrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
@@ -44,25 +74,19 @@ const Wrapper = styled.div<BgImages>`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(${props => props.small});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+`
+const BgImage = styled(Image)`
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100vh;
 
-    @media screen and (min-width: 768px) {
-      background-image: url(${props => props.medium});
-    }
-
-    @media screen and (min-width: 1680px) {
-      background-image: url(${props => props.big});
-    }
+  & > img {
+    object-fit: cover !important;
+    object-position: 0% 0% !important;
+    font-family: 'object-fit: cover !important; object-position: 0% 0% !important;';
   }
 `
 

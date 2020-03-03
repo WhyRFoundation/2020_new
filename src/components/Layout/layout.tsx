@@ -52,7 +52,6 @@ const history = createHistory(source)
 interface LayoutInterface extends HeroProps {}
 
 export const Layout: React.FC<LayoutInterface> = ({
-  bgImages,
   title,
   subtitle,
   children,
@@ -92,11 +91,7 @@ export const Layout: React.FC<LayoutInterface> = ({
             </MediaQueryWrapper>
           </>
           <span ref={heroRef}>
-            <Hero
-              title={titleText}
-              subtitle={subtitleText}
-              bgImages={bgImages}
-            />
+            <Hero title={titleText} subtitle={subtitleText} />
           </span>
           <PageContent>{children}</PageContent>
           <Footer />

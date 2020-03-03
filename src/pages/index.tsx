@@ -17,7 +17,10 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
   return (
     <LocationProvider>
       {locationContext => (
-        <Layout>
+        <Layout
+          title={pageContent.frontmatter.title}
+          subtitle={pageContent.frontmatter.subtitle}
+        >
           <Seo
             title={pageContent.frontmatter.title}
             keywords={pageContent.frontmatter.keywords}
@@ -39,6 +42,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        subtitle
         description
         keywords
         sections {

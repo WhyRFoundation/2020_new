@@ -699,6 +699,7 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___contentType' |
   'childMdx___frontmatter___keywords' |
   'childMdx___frontmatter___redirect' |
+  'childMdx___frontmatter___subtitle' |
   'childMdx___frontmatter___sections' |
   'childMdx___frontmatter___sections___type' |
   'childMdx___frontmatter___sections___title' |
@@ -1445,6 +1446,7 @@ export type MdxFieldsEnum =
   'frontmatter___contentType' |
   'frontmatter___keywords' |
   'frontmatter___redirect' |
+  'frontmatter___subtitle' |
   'frontmatter___sections' |
   'frontmatter___sections___type' |
   'frontmatter___sections___title' |
@@ -1592,6 +1594,7 @@ export type MdxFrontmatter = {
   contentType?: Maybe<Scalars['String']>,
   keywords?: Maybe<Scalars['String']>,
   redirect?: Maybe<Scalars['String']>,
+  subtitle?: Maybe<Scalars['String']>,
   sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
 };
 
@@ -1612,6 +1615,7 @@ export type MdxFrontmatterFilterInput = {
   contentType?: Maybe<StringQueryOperatorInput>,
   keywords?: Maybe<StringQueryOperatorInput>,
   redirect?: Maybe<StringQueryOperatorInput>,
+  subtitle?: Maybe<StringQueryOperatorInput>,
   sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
 };
 
@@ -3170,15 +3174,20 @@ export type Unnamed_1_QueryVariables = {};
 
 export type Unnamed_1_Query = { site: Maybe<{ siteMetadata: Maybe<{ footer: Maybe<Array<Maybe<Pick<SiteSiteMetadataFooter, 'role' | 'people' | 'links'>>>> }> }> };
 
+export type Unnamed_2_QueryVariables = {};
+
+
+export type Unnamed_2_Query = { mobileImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<> }> }>, desktopImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<> }> }>, bigDesktopImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<> }> }> };
+
 export type SearchIndexQueryQueryVariables = {};
 
 
 export type SearchIndexQueryQuery = { siteSearchIndex: Maybe<Pick<SiteSearchIndex, 'index'>> };
 
-export type Unnamed_2_QueryVariables = {};
+export type Unnamed_3_QueryVariables = {};
 
 
-export type Unnamed_2_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'siteUrl' | 'logo' | 'fbPageId' | 'dateModified'>> }> };
+export type Unnamed_3_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'siteUrl' | 'logo' | 'fbPageId' | 'dateModified'>> }> };
 
 export type IndexPageQueryVariables = {};
 
@@ -3186,7 +3195,7 @@ export type IndexPageQueryVariables = {};
 export type IndexPageQuery = { mdx: Maybe<(
     Pick<Mdx, 'body'>
     & { frontmatter: Maybe<(
-      Pick<MdxFrontmatter, 'title' | 'description' | 'keywords'>
+      Pick<MdxFrontmatter, 'title' | 'subtitle' | 'description' | 'keywords'>
       & { sections: Maybe<Array<Maybe<(
         Pick<MdxFrontmatterSections, 'title' | 'type' | 'content'>
         & { images: Maybe<Array<Maybe<(
@@ -3200,10 +3209,10 @@ export type IndexPageQuery = { mdx: Maybe<(
     )> }
   )> };
 
-export type Unnamed_3_QueryVariables = {};
+export type Unnamed_4_QueryVariables = {};
 
 
-export type Unnamed_3_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type Unnamed_4_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 export type BlogPostBySlugQueryVariables = {
   slug: Scalars['String']
@@ -3221,7 +3230,7 @@ export type PageBySlugQueryVariables = {
 
 
 export type PageBySlugQuery = { mdx: Maybe<{ frontmatter: Maybe<(
-      Pick<MdxFrontmatter, 'title' | 'description' | 'keywords'>
+      Pick<MdxFrontmatter, 'title' | 'subtitle' | 'description' | 'keywords'>
       & { sections: Maybe<Array<Maybe<(
         Pick<MdxFrontmatterSections, 'title' | 'type' | 'content'>
         & { images: Maybe<Array<Maybe<(
@@ -3234,10 +3243,10 @@ export type PageBySlugQuery = { mdx: Maybe<{ frontmatter: Maybe<(
       )>>> }
     )> }> };
 
-export type Unnamed_4_QueryVariables = {};
+export type Unnamed_5_QueryVariables = {};
 
 
-export type Unnamed_4_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type Unnamed_5_Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 export type ProductBySlugQueryVariables = {
   slug: Scalars['String']

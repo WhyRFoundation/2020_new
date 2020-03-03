@@ -37,6 +37,7 @@ export const pageQuery = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        subtitle
         description
         keywords
         sections {
