@@ -58,6 +58,11 @@ export const Navigation: React.FC<{}> = () => {
           </NavigationLink>
         </LinkWrapper>
         <LinkWrapper>
+          <NavigationLink onClick={() => scrollToHandler('DATES AND REGISTRATION')}>
+            Dates
+          </NavigationLink>
+        </LinkWrapper>
+        <LinkWrapper>
           <NavigationLink onClick={() => scrollToHandler('2020 KEYNOTES')}>
             Speakers
           </NavigationLink>
@@ -79,6 +84,11 @@ export const Navigation: React.FC<{}> = () => {
             ORGANIZERS
           </NavigationLink>
         </LinkWrapper>
+        <LinkWrapper>
+          <NavigationLink onClick={() => scrollToHandler('Code of Conduct')}>
+            CONDUCT
+          </NavigationLink>
+        </LinkWrapper>        
         <LinkWrapper>
           <NavigationLink
             path="http://whyr.pl/foundation/#blog"
