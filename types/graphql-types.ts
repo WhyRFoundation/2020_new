@@ -694,18 +694,18 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___title' |
   'childMdx___frontmatter___pageTemplate' |
   'childMdx___frontmatter___pagePrefixPath' |
-  'childMdx___frontmatter___subtitle' |
+  'childMdx___frontmatter___contentType' |
   'childMdx___frontmatter___description' |
   'childMdx___frontmatter___keywords' |
+  'childMdx___frontmatter___redirect' |
+  'childMdx___frontmatter___date' |
+  'childMdx___frontmatter___subtitle' |
   'childMdx___frontmatter___sections' |
   'childMdx___frontmatter___sections___type' |
   'childMdx___frontmatter___sections___title' |
   'childMdx___frontmatter___sections___content' |
   'childMdx___frontmatter___sections___images' |
   'childMdx___frontmatter___sections___sponsors' |
-  'childMdx___frontmatter___contentType' |
-  'childMdx___frontmatter___redirect' |
-  'childMdx___frontmatter___date' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1441,9 +1441,12 @@ export type MdxFieldsEnum =
   'frontmatter___title' |
   'frontmatter___pageTemplate' |
   'frontmatter___pagePrefixPath' |
-  'frontmatter___subtitle' |
+  'frontmatter___contentType' |
   'frontmatter___description' |
   'frontmatter___keywords' |
+  'frontmatter___redirect' |
+  'frontmatter___date' |
+  'frontmatter___subtitle' |
   'frontmatter___sections' |
   'frontmatter___sections___type' |
   'frontmatter___sections___title' |
@@ -1459,9 +1462,6 @@ export type MdxFieldsEnum =
   'frontmatter___sections___sponsors' |
   'frontmatter___sections___sponsors___rank' |
   'frontmatter___sections___sponsors___images' |
-  'frontmatter___contentType' |
-  'frontmatter___redirect' |
-  'frontmatter___date' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1589,13 +1589,13 @@ export type MdxFrontmatter = {
   title: Scalars['String'],
   pageTemplate?: Maybe<Scalars['String']>,
   pagePrefixPath?: Maybe<Scalars['String']>,
-  subtitle?: Maybe<Scalars['String']>,
+  contentType?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
   keywords?: Maybe<Scalars['String']>,
-  sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
-  contentType?: Maybe<Scalars['String']>,
   redirect?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
+  subtitle?: Maybe<Scalars['String']>,
+  sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
 };
 
 
@@ -1610,13 +1610,13 @@ export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   pageTemplate?: Maybe<StringQueryOperatorInput>,
   pagePrefixPath?: Maybe<StringQueryOperatorInput>,
-  subtitle?: Maybe<StringQueryOperatorInput>,
+  contentType?: Maybe<StringQueryOperatorInput>,
   description?: Maybe<StringQueryOperatorInput>,
   keywords?: Maybe<StringQueryOperatorInput>,
-  sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
-  contentType?: Maybe<StringQueryOperatorInput>,
   redirect?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
+  subtitle?: Maybe<StringQueryOperatorInput>,
+  sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
 };
 
 export type MdxFrontmatterSections = {
@@ -2038,8 +2038,8 @@ export type QuerySitePageArgs = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
-  internalComponentName?: Maybe<StringQueryOperatorInput>,
   path?: Maybe<StringQueryOperatorInput>,
+  internalComponentName?: Maybe<StringQueryOperatorInput>,
   component?: Maybe<StringQueryOperatorInput>,
   componentChunkName?: Maybe<StringQueryOperatorInput>,
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>,
@@ -2236,8 +2236,8 @@ export type SitePage = Node & {
   parent?: Maybe<Node>,
   children: Array<Node>,
   internal: Internal,
-  internalComponentName?: Maybe<Scalars['String']>,
   path?: Maybe<Scalars['String']>,
+  internalComponentName?: Maybe<Scalars['String']>,
   component?: Maybe<Scalars['String']>,
   componentChunkName?: Maybe<Scalars['String']>,
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>,
@@ -2429,8 +2429,8 @@ export type SitePageFieldsEnum =
   'internal___mediaType' |
   'internal___owner' |
   'internal___type' |
-  'internalComponentName' |
   'path' |
+  'internalComponentName' |
   'component' |
   'componentChunkName' |
   'isCreatedByStatefulCreatePages' |
@@ -2534,8 +2534,8 @@ export type SitePageFilterInput = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
-  internalComponentName?: Maybe<StringQueryOperatorInput>,
   path?: Maybe<StringQueryOperatorInput>,
+  internalComponentName?: Maybe<StringQueryOperatorInput>,
   component?: Maybe<StringQueryOperatorInput>,
   componentChunkName?: Maybe<StringQueryOperatorInput>,
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>,

@@ -90,6 +90,7 @@ const ListItemContent = styled.div`
   z-index: 2;
   transform: scale();
   transition: all 0.2s ease-in-out;
+  min-height: 21em;
 
   &:after {
     content: '';

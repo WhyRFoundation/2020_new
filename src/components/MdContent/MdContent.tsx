@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   h4,
   h5,
   h6 {
-    margin: 20px 0 10px;
+    margin: 16px 0;
     padding: 0;
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
@@ -55,8 +55,6 @@ const Wrapper = styled.div`
   h4:hover a.anchor,
   h5:hover a.anchor,
   h6:hover a.anchor {
-    background: url('../../images/modules/styleguide/para.png') no-repeat 10px
-      center;
     text-decoration: none;
   }
 
@@ -123,18 +121,19 @@ const Wrapper = styled.div`
   li,
   table,
   pre {
-    margin: 1em 0;
+    margin: 16px 0;
     color: ${props => props.theme.primaryTextColor};
     font-family: ${props => props.theme.textFont};
   }
 
   hr {
-    background: transparent url('../../images/modules/pulls/dirty-shade.png')
-      repeat-x 0 0;
+    background: transparent;
     border: 0 none;
     color: #cccccc;
-    height: 4px;
+    height: 0;
     padding: 0;
+    visibility: hidden;
+    margin: -16px 0;
   }
 
   body > h2:first-child {
