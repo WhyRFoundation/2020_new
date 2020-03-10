@@ -698,6 +698,7 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___description' |
   'childMdx___frontmatter___keywords' |
   'childMdx___frontmatter___redirect' |
+  'childMdx___frontmatter___date' |
   'childMdx___frontmatter___subtitle' |
   'childMdx___frontmatter___sections' |
   'childMdx___frontmatter___sections___type' |
@@ -705,7 +706,6 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___sections___content' |
   'childMdx___frontmatter___sections___images' |
   'childMdx___frontmatter___sections___sponsors' |
-  'childMdx___frontmatter___date' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1445,6 +1445,7 @@ export type MdxFieldsEnum =
   'frontmatter___description' |
   'frontmatter___keywords' |
   'frontmatter___redirect' |
+  'frontmatter___date' |
   'frontmatter___subtitle' |
   'frontmatter___sections' |
   'frontmatter___sections___type' |
@@ -1461,7 +1462,6 @@ export type MdxFieldsEnum =
   'frontmatter___sections___sponsors' |
   'frontmatter___sections___sponsors___rank' |
   'frontmatter___sections___sponsors___images' |
-  'frontmatter___date' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1593,9 +1593,9 @@ export type MdxFrontmatter = {
   description?: Maybe<Scalars['String']>,
   keywords?: Maybe<Scalars['String']>,
   redirect?: Maybe<Scalars['String']>,
+  date?: Maybe<Scalars['Date']>,
   subtitle?: Maybe<Scalars['String']>,
   sections?: Maybe<Array<Maybe<MdxFrontmatterSections>>>,
-  date?: Maybe<Scalars['Date']>,
 };
 
 
@@ -1614,9 +1614,9 @@ export type MdxFrontmatterFilterInput = {
   description?: Maybe<StringQueryOperatorInput>,
   keywords?: Maybe<StringQueryOperatorInput>,
   redirect?: Maybe<StringQueryOperatorInput>,
+  date?: Maybe<DateQueryOperatorInput>,
   subtitle?: Maybe<StringQueryOperatorInput>,
   sections?: Maybe<MdxFrontmatterSectionsFilterListInput>,
-  date?: Maybe<DateQueryOperatorInput>,
 };
 
 export type MdxFrontmatterSections = {
