@@ -7,12 +7,17 @@ import { PeopleSectionTemplate } from '../../components/homePageSections/PeopleS
 import { TilesGalleryTemplate } from '../../components/homePageSections/TilesGalleryTemplate'
 import { SpeakersSectionTemplate } from '../../components/homePageSections/SpeakersSectionTemplate'
 import { SponsorsSectionTemplate } from '../../components/homePageSections/SponsorsSectionTemplate'
+import { TableSectionTemplate } from '../../components/homePageSections/TableSectionTemplate'
 
 interface IndexPageProps {
   sections: IndexPageQuery['mdx']['frontmatter']['sections']
+  body?: IndexPageQuery['mdx']['body']
 }
 
-export const PageContentCreator: React.FC<IndexPageProps> = ({ sections }) => {
+export const PageContentCreator: React.FC<IndexPageProps> = ({
+  sections,
+  body,
+}) => {
   return (
     <>
       {sections.map(section => {
@@ -39,6 +44,8 @@ export const PageContentCreator: React.FC<IndexPageProps> = ({ sections }) => {
             return (
               <SponsorsSectionTemplate key={section.title} section={section} />
             )
+          case 'tableContent':
+            return <TableSectionTemplate section={section} body={body} />
           default:
             return <TextSectionTemplate key={section.title} section={section} />
         }

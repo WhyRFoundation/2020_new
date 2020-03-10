@@ -4,14 +4,16 @@ import styled from 'styled-components'
 interface SectionWrapperProps {
   isGlued?: boolean
   id?: string
+  className?: string
 }
 
 export const SectionWrapper: React.FC<SectionWrapperProps> = ({
   children,
   isGlued,
   id,
+  className,
 }) => (
-  <Wrapper isGlued={isGlued} id={id}>
+  <Wrapper isGlued={isGlued} id={id} className={className}>
     {children}
   </Wrapper>
 )

@@ -27,7 +27,10 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
             location={locationContext.location.pathname}
             description={pageContent.frontmatter.description}
           />
-          <PageContentCreator sections={pageContent.frontmatter.sections} />
+          <PageContentCreator
+            sections={pageContent.frontmatter.sections}
+            body={data.mdx.body || ''}
+          />
         </Layout>
       )}
     </LocationProvider>
