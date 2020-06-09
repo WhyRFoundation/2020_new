@@ -80,7 +80,7 @@ const ListItem = styled.div`
   margin-bottom: 3em;
 
   @media screen and (min-width: 767px) {
-    width: 25%;
+    width: 20%;
     margin-bottom: 5em;
   }
 `
