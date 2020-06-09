@@ -65,7 +65,7 @@ export const Layout: React.FC<LayoutInterface> = ({
   }
 
   const titleText = title || 'Why R? 2020 Conference'
-  const subtitleText = subtitle || 'Warsaw, 27-30.08'
+  const subtitleText = subtitle || 'youtube.com/WhyRFoundation, 24-27.09'
 
   return (
     <LocationProvider history={history}>
