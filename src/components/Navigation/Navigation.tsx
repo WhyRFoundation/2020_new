@@ -70,7 +70,7 @@ export const Navigation: React.FC<{}> = () => {
         <LinkWrapper>
           <NavigationLink
             onClick={() => scrollToHandler('WHY R? 2020 WEBINARS')}
-            2020 WEBINARS
+            WEBINARS
           </NavigationLink>
         </LinkWrapper>
         <LinkWrapper>
