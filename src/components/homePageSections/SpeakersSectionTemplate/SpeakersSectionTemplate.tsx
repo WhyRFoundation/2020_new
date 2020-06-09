@@ -34,7 +34,7 @@ export const SpeakersSectionTemplate: React.FC<SpeakersSectionTemplateProps> = (
       <SectionWrapper id={title}>
         {title && <SectionTitle>{title}</SectionTitle>}
         <MdContent md={content} />
-        <ImageList centerList={images && images.length <= 4}>
+        <ImageList centerList={images && images.length <= 5}>
           {images &&
             images.length > 0 &&
             images.map(image => (
