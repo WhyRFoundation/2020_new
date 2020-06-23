@@ -34,7 +34,7 @@ export const SpeakersSectionTemplate: React.FC<SpeakersSectionTemplateProps> = (
       <SectionWrapper id={title}>
         {title && <SectionTitle>{title}</SectionTitle>}
         <MdContent md={content} />
-        <ImageList centerList={images && images.length <= 5}>
+        <ImageList centerList={images && images.length <= 3}>
           {images &&
             images.length > 0 &&
             images.map(image => (
@@ -80,7 +80,7 @@ const ListItem = styled.div`
   margin-bottom: 3em;
 
   @media screen and (min-width: 767px) {
-    width: 20%;
+    width: 33%;
     margin-bottom: 5em;
   }
 `
