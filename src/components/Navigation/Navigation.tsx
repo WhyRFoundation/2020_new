@@ -46,10 +46,6 @@ export const Navigation: React.FC<{}> = () => {
           <CtaNavButtonText>Tickets</CtaNavButtonText>
           <StyledTicketIcon />
         </CtaNavButton>
-        <CtaNavButton href="/submit" target="_blank">
-          <CtaNavButtonText>Submit</CtaNavButtonText>
-          <StyledSpeakerIcon />
-        </CtaNavButton>
       </StyledNav>
       <StyledNav>
         <LinkWrapper>
