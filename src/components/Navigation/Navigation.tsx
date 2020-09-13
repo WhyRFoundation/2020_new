@@ -55,7 +55,7 @@ export const Navigation: React.FC<{}> = () => {
         </LinkWrapper>
         <LinkWrapper>
           <NavigationLink onClick={() => scrollToHandler('DATES AND AGENDA')}>
-            Dates
+            Agenda
           </NavigationLink>
         </LinkWrapper>
         <LinkWrapper>
