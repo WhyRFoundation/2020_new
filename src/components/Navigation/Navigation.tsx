@@ -46,6 +46,10 @@ export const Navigation: React.FC<{}> = () => {
           <CtaNavButtonText>Tickets</CtaNavButtonText>
           <StyledTicketIcon />
         </CtaNavButton>
+        <CtaNavButton href="/youtube" target="_blank">
+          <CtaNavButtonText>YouTube</CtaNavButtonText>
+          <StyledSpeakerIcon />
+        </CtaNavButton>
       </StyledNav>
       <StyledNav>
         <LinkWrapper>
