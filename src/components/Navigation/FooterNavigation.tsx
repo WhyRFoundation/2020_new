@@ -5,8 +5,8 @@ import { MdSpeakerNotes } from 'react-icons/md'
 
 export const FooterNavigation: React.FC<{}> = () => (
   <Wrapper>
-    <CtaNavButton href="/register" target="_blank">
-      <CtaNavButtonText>Tickets</CtaNavButtonText>
+    <CtaNavButton href="http://whyr.pl/" target="_blank">
+      <CtaNavButtonText>Why R?</CtaNavButtonText>
       <StyledTicketIcon />
     </CtaNavButton>
     <CtaNavButton href="/youtube" target="_blank">
