@@ -43,7 +43,7 @@ export const Navigation: React.FC<{}> = () => {
     <Wrapper fillNav={fillNav}>
       <StyledNav>
         <CtaNavButton href="http://whyr.pl/" target="_blank">
-          <CtaNavButtonText>Why R?</CtaNavButtonText>
+          <CtaNavButtonText>Why R</CtaNavButtonText>
           <StyledTicketIcon />
         </CtaNavButton>
         <CtaNavButton href="/youtube" target="_blank">
