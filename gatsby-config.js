@@ -134,7 +134,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts.`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
           {
